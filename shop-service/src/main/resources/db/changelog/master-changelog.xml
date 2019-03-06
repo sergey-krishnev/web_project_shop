@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.1"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.1
+    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.1.xsd">
+    <changeSet id="1" author="user">
+        <createTable tableName="request">
+            <column name="id" type="int">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="customer_name" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_address" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sum" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="request_details">
+            <column name="id" type="int">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="product_serial" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="count" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="request_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="product_description">
+            <column name="serial" type="varchar(30)">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+
+        <addForeignKeyConstraint baseTableName="request_details" baseColumnNames="product_serial"
+                                 constraintName="fk_serial_request_details"
+                                 referencedTableName="product_description" referencedColumnNames="serial"/>
+        <addForeignKeyConstraint baseTableName="request_details" baseColumnNames="request_id"
+                                 constraintName="fk_request_id_request_details"
+                                 referencedTableName="request" referencedColumnNames="id"/>
+
+    </changeSet>
+</databaseChangeLog>
