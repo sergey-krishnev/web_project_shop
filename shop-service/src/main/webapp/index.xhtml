@@ -1,0 +1,47 @@
+<f:view xmlns="http://www.w3c.org/1999/xhtml"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>TO-DO application</title>
+    </h:head>
+    <h:body>
+            <!--<p:column headerText="operations">-->
+                <!--<h:form>-->
+                    <!--<p:commandButton value="edit" action="#{checkListController.setCheck(check)}" update=":checkForm" resetValues="true" oncomplete="PF('checkDialog').show()" />-->
+                    <!--<p:commandButton value="remove" action="#{checkListController.remove(check)}" update=":checkTable, :messages">-->
+                        <!--<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />-->
+                    <!--</p:commandButton>-->
+                <!--</h:form>-->
+            <!--</p:column>-->
+        <h:form id="form">
+            <p:panel header="Request List">
+                <p:dataTable id="table" var="requestDetails" value="#{requestDetailsController.requestsDetails}">
+                    <p:column>
+                        <f:facet name="header"># Id</f:facet>
+                        <h:outputText value="#{requestDetails.id}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Customer Name</f:facet>
+                        <h:outputText value="#{requestDetails.request.customerName}" />
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Customer Address</f:facet>
+                        <h:outputText value="#{requestDetails.request.customerAddress}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Sum</f:facet>
+                        <h:outputText value="#{requestDetails.request.sum}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Count</f:facet>
+                        <h:outputText value="#{requestDetails.count}"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+
+    </h:body>
+</f:view>

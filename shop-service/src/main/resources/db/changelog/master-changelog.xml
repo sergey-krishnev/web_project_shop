@@ -59,4 +59,61 @@
                                  referencedTableName="request" referencedColumnNames="id"/>
 
     </changeSet>
+
+    <changeSet id="2" author="user">
+        <insert tableName="request">
+            <column name="id" value="1"/>
+            <column name="customer_name" value="vsvesdv"/>
+            <column name="customer_address" value="sdfvfdbfgbfdvdf"/>
+            <column name="sum" value="15"/>
+        </insert>
+        <insert tableName="request">
+            <column name="id" value="2"/>
+            <column name="customer_name" value="dsvfdx"/>
+            <column name="customer_address" value="dscvzvxcwgyh"/>
+            <column name="sum" value="10"/>
+        </insert>
+        <insert tableName="request">
+            <column name="id" value="3"/>
+            <column name="customer_name" value="asxsdcxc"/>
+            <column name="customer_address" value="ioloililu"/>
+            <column name="sum" value="13"/>
+        </insert>
+        <insert tableName="product_description">
+            <column name="serial" value="11111ooo5"/>
+            <column name="name" value="fesdsvdvddbf"/>
+            <column name="description" value="awrfeswf eerg reghrt sgf"/>
+            <column name="date" value="01-01-01"/>
+        </insert>
+        <insert tableName="product_description">
+            <column name="serial" value="22222jjj3"/>
+            <column name="name" value="fesdsvdvddbf"/>
+            <column name="description" value="awrfeswf eerg reghrt sgf"/>
+            <column name="date" value="01-01-01"/>
+        </insert>
+        <insert tableName="product_description">
+            <column name="serial" value="33333dd1"/>
+            <column name="name" value="fesdsvdvddbf"/>
+            <column name="description" value="awrfeswf eerg reghrt sgf"/>
+            <column name="date" value="01-01-01"/>
+        </insert>
+        <insert tableName="request_details">
+            <column name="id" value="1"/>
+            <column name="product_serial" value="33333dd1"/>
+            <column name="count" value="4"/>
+            <column name="request_id" value="3"/>
+        </insert>
+        <insert tableName="request_details">
+            <column name="id" value="2"/>
+            <column name="product_serial" value="22222jjj3"/>
+            <column name="count" value="20"/>
+            <column name="request_id" value="1"/>
+        </insert>
+        <insert tableName="request_details">
+            <column name="id" value="3"/>
+            <column name="product_serial" value="11111ooo5"/>
+            <column name="count" value="3"/>
+            <column name="request_id" value="2"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>
