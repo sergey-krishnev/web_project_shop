@@ -39,9 +39,33 @@
                         <f:facet name="header">Count</f:facet>
                         <h:outputText value="#{requestDetails.count}"/>
                     </p:column>
+                    <p:column>
+                        <f:facet name="header">Description</f:facet>
+                        <h:commandButton value="Description">
+                        </h:commandButton>
+                        <!--<h:inputHidden value="#{requestDetails.productDescription.serial}"/>-->
+                    </p:column>
                 </p:dataTable>
             </p:panel>
         </h:form>
-
+            <h3>Product Description</h3>
+        <h:form var="productDescription" value="#{requestDetailsController.requestDetails.productDescription}">
+                <h:outputLabel for="serial">Serial Number:</h:outputLabel>
+                <h:outputText id="serial" value="#{productDescription.serial}"/>
+                <br/>
+                <br/>
+                <h:outputLabel for="product-name">Product Name:</h:outputLabel>
+                <h:outputText id="product-name" value="#{productDescription.name}"/>
+                <br/>
+                <br/>
+                <h:outputLabel for="description">Description:</h:outputLabel>
+                <h:outputText  id="description" value="#{productDescription.description}"/>
+                <br/>
+                <br/>
+                <h:outputLabel for="date">Date:</h:outputLabel>
+                <h:outputText  id="date" value="#{productDescription.date}"/>
+                <br/>
+                <br/>
+        </h:form>
     </h:body>
 </f:view>

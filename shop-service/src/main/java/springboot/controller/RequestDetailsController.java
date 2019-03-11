@@ -18,9 +18,13 @@ public class RequestDetailsController {
     @Autowired
     private RequestService requestService;
 
-    private RequestDetails requestDetails = new RequestDetails();
+//    private RequestDetails requestDetails = new RequestDetails();
 
     public List<RequestDetails> getRequestsDetails() {
         return requestService.findAll();
+    }
+
+    public RequestDetails getRequestDetails() {
+        return requestService.getOne(1);
     }
 }

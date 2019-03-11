@@ -81,19 +81,19 @@
         </insert>
         <insert tableName="product_description">
             <column name="serial" value="11111ooo5"/>
-            <column name="name" value="fesdsvdvddbf"/>
-            <column name="description" value="awrfeswf eerg reghrt sgf"/>
+            <column name="name" value="fesdrefdbf"/>
+            <column name="description" value="dssssssgftrh"/>
             <column name="date" value="01-01-01"/>
         </insert>
         <insert tableName="product_description">
             <column name="serial" value="22222jjj3"/>
-            <column name="name" value="fesdsvdvddbf"/>
-            <column name="description" value="awrfeswf eerg reghrt sgf"/>
+            <column name="name" value="fesdjrtyjtyujuiktf"/>
+            <column name="description" value="qwdwgerhfgbnuik,"/>
             <column name="date" value="01-01-01"/>
         </insert>
         <insert tableName="product_description">
             <column name="serial" value="33333dd1"/>
-            <column name="name" value="fesdsvdvddbf"/>
+            <column name="name" value="piuimkyuvddbf"/>
             <column name="description" value="awrfeswf eerg reghrt sgf"/>
             <column name="date" value="01-01-01"/>
         </insert>

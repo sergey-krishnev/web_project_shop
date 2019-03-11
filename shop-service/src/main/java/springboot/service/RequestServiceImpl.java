@@ -13,9 +13,13 @@ public class RequestServiceImpl implements RequestService {
     @Autowired
     private RequestDetailsRepository requestDetailsRepository;
 
-
     @Override
     public List<RequestDetails> findAll() {
         return requestDetailsRepository.findAll();
+    }
+
+    @Override
+    public RequestDetails getOne(Integer id) {
+        return  requestDetailsRepository.getOne(id);
     }
 }

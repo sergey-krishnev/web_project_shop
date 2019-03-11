@@ -8,4 +8,5 @@ public interface RequestService {
 
     List<RequestDetails> findAll();
 
+    RequestDetails getOne(Integer id);
 }
