@@ -1,12 +1,13 @@
 package springboot.service;
 
-import springboot.model.RequestDetails;
+import springboot.model.ProductDescription;
+import springboot.model.Request;
 
 import java.util.List;
 
 public interface RequestService {
 
-    List<RequestDetails> findAll();
+    List<Request> findAll();
 
-    RequestDetails getOne(Integer id);
+    Request findById(Integer id);
 }

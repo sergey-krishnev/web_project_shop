@@ -2,11 +2,10 @@ package springboot.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -23,4 +22,10 @@ public class Request {
 
     @NotNull
     private int sum;
+
+    @NotNull
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "request_details", joinColumns = { @JoinColumn(name = "request_id")},
+    inverseJoinColumns = { @JoinColumn(name = "product_serial")})
+    private List<ProductDescription> productDescriptions = new ArrayList<>();
 }

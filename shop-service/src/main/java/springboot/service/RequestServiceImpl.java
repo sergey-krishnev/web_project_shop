@@ -2,8 +2,10 @@ package springboot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import springboot.dao.RequestDetailsRepository;
-import springboot.model.RequestDetails;
+import org.springframework.transaction.annotation.Transactional;
+import springboot.dao.RequestRepository;
+import springboot.model.ProductDescription;
+import springboot.model.Request;
 
 import java.util.List;
 
@@ -11,15 +13,17 @@ import java.util.List;
 public class RequestServiceImpl implements RequestService {
 
     @Autowired
-    private RequestDetailsRepository requestDetailsRepository;
+    private RequestRepository requestRepository;
 
+    @Transactional(readOnly = true)
     @Override
-    public List<RequestDetails> findAll() {
-        return requestDetailsRepository.findAll();
+    public List<Request> findAll() {
+        return requestRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
     @Override
-    public RequestDetails getOne(Integer id) {
-        return  requestDetailsRepository.getOne(id);
+    public Request findById(Integer id) {
+        return requestRepository.findById(id).get();
     }
 }

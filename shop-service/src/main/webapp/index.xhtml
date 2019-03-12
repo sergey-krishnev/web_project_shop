@@ -1,71 +1,131 @@
-<f:view xmlns="http://www.w3c.org/1999/xhtml"
-        xmlns:f="http://java.sun.com/jsf/core"
-        xmlns:p="http://primefaces.org/ui"
-        xmlns:h="http://java.sun.com/jsf/html">
-    <h:head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>TO-DO application</title>
-    </h:head>
-    <h:body>
-            <!--<p:column headerText="operations">-->
-                <!--<h:form>-->
-                    <!--<p:commandButton value="edit" action="#{checkListController.setCheck(check)}" update=":checkForm" resetValues="true" oncomplete="PF('checkDialog').show()" />-->
-                    <!--<p:commandButton value="remove" action="#{checkListController.remove(check)}" update=":checkTable, :messages">-->
-                        <!--<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert" />-->
-                    <!--</p:commandButton>-->
-                <!--</h:form>-->
-            <!--</p:column>-->
-        <h:form id="form">
-            <p:panel header="Request List">
-                <p:dataTable id="table" var="requestDetails" value="#{requestDetailsController.requestsDetails}">
-                    <p:column>
-                        <f:facet name="header"># Id</f:facet>
-                        <h:outputText value="#{requestDetails.id}" />
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Customer Name</f:facet>
-                        <h:outputText value="#{requestDetails.request.customerName}" />
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Customer Address</f:facet>
-                        <h:outputText value="#{requestDetails.request.customerAddress}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Sum</f:facet>
-                        <h:outputText value="#{requestDetails.request.sum}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Count</f:facet>
-                        <h:outputText value="#{requestDetails.count}"/>
-                    </p:column>
-                    <p:column>
-                        <f:facet name="header">Description</f:facet>
-                        <h:commandButton value="Description">
-                        </h:commandButton>
-                        <!--<h:inputHidden value="#{requestDetails.productDescription.serial}"/>-->
-                    </p:column>
-                </p:dataTable>
-            </p:panel>
-        </h:form>
-            <h3>Product Description</h3>
-        <h:form var="productDescription" value="#{requestDetailsController.requestDetails.productDescription}">
-                <h:outputLabel for="serial">Serial Number:</h:outputLabel>
-                <h:outputText id="serial" value="#{productDescription.serial}"/>
-                <br/>
-                <br/>
-                <h:outputLabel for="product-name">Product Name:</h:outputLabel>
-                <h:outputText id="product-name" value="#{productDescription.name}"/>
-                <br/>
-                <br/>
-                <h:outputLabel for="description">Description:</h:outputLabel>
-                <h:outputText  id="description" value="#{productDescription.description}"/>
-                <br/>
-                <br/>
-                <h:outputLabel for="date">Date:</h:outputLabel>
-                <h:outputText  id="date" value="#{productDescription.date}"/>
-                <br/>
-                <br/>
-        </h:form>
-    </h:body>
-</f:view>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:rich="http://richfaces.org/rich">
+            <!--<h:form>-->
+                <rich:dataTable var="requestData" value="#{requestController.requests}">
+                    <f:facet name="header">
+                        <rich:columnGroup>
+                            <rich:column>
+                                <h:outputText value="# Id"/>
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="Customer Name"/>
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="Customer Address"/>
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="Sum"/>
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="Description"/>
+                            </rich:column>
+                        </rich:columnGroup>
+                    </f:facet>
+                    <rich:column>
+                        <h:outputText value="#{requestData.id}" />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="#{requestData.customerName}" />
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="#{requestData.customerAddress}"/>
+                    </rich:column>
+                    <rich:column>
+                        <h:outputText value="#{requestData.sum}"/>
+                    </rich:column>
+                    <!--<rich:column>-->
+                            <!--<h:commandButton value="Description" actionListener="#{requestDetailsController.attrListener}">-->
+                                <!--<f:attribute name="action" value="#{requestDetailsData.id}" />-->
+                            <!--</h:commandButton>-->
+                    <!--</rich:column>-->
+                </rich:dataTable>
+
+    <rich:dataTable var="productDescriptionData" value="#{requestController.request.productDescriptions}">
+        <f:facet name="header">
+            <rich:columnGroup>
+                <rich:column>
+                    <h:outputText value="Serial"/>
+                </rich:column>
+                <rich:column>
+                    <h:outputText value="Name"/>
+                </rich:column>
+                <rich:column>
+                    <h:outputText value="Description"/>
+                </rich:column>
+                <rich:column>
+                    <h:outputText value="Date"/>
+                </rich:column>
+            </rich:columnGroup>
+        </f:facet>
+        <rich:column>
+            <h:outputText value="#{productDescriptionData.serial}" />
+        </rich:column>
+        <rich:column>
+            <h:outputText value="#{productDescriptionData.name}" />
+        </rich:column>
+        <rich:column>
+            <h:outputText value="#{productDescriptionData.description}"/>
+        </rich:column>
+        <rich:column>
+            <h:outputText value="#{productDescriptionData.date}"/>
+        </rich:column>
+        <!--<rich:column>-->
+        <!--<h:commandButton value="Description" actionListener="#{requestDetailsController.attrListener}">-->
+        <!--<f:attribute name="action" value="#{requestDetailsData.id}" />-->
+        <!--</h:commandButton>-->
+        <!--</rich:column>-->
+    </rich:dataTable>
+
+
+            <!--</h:form>-->
+        <!--<h3>Product Description</h3>-->
+    <!--<rich:panel>-->
+        <!--&lt;!&ndash;<h:form>&ndash;&gt;-->
+            <!--&lt;!&ndash;<h:outputLabel for="serial">Serial Number:</h:outputLabel>&ndash;&gt;-->
+            <!--&lt;!&ndash;<h:outputText id="serial" value="#{requestDetailsController.requestDetails.productDescription.serial}"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<h:outputLabel for="product-name">Product Name:</h:outputLabel>&ndash;&gt;-->
+            <!--&lt;!&ndash;<h:outputText id="product-name" value="#{requestDetailsController.requestDetails.productDescription.name}"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<h:outputLabel for="description">Description:</h:outputLabel>&ndash;&gt;-->
+            <!--&lt;!&ndash;<h:outputText  id="description" value="#{requestDetailsController.requestDetails.productDescription.description}"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<h:outputLabel for="date">Date:</h:outputLabel>&ndash;&gt;-->
+            <!--&lt;!&ndash;<h:outputText  id="date" value="#{requestDetailsController.requestDetails.productDescription.date}"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</h:form>&ndash;&gt;-->
+        <!--<h:form var="productDescription" value="#{requestDetailsController.requestDescription}">-->
+            <!--<h:outputLabel for="serial">Serial Number:</h:outputLabel>-->
+            <!--<h:outputText id="serial" value="#{productDescription.serial}"/>-->
+            <!--<br/>-->
+            <!--<br/>-->
+            <!--<h:outputLabel for="product-name">Product Name:</h:outputLabel>-->
+            <!--<h:outputText id="product-name" value="#{productDescription.name}"/>-->
+            <!--<br/>-->
+            <!--<br/>-->
+            <!--<h:outputLabel for="description">Description:</h:outputLabel>-->
+            <!--<h:outputText  id="description" value="#{productDescription.description}"/>-->
+            <!--<br/>-->
+            <!--<br/>-->
+            <!--<h:outputLabel for="date">Date:</h:outputLabel>-->
+            <!--<h:outputText  id="date" value="#{productDescription.date}"/>-->
+            <!--<br/>-->
+            <!--<br/>-->
+        <!--</h:form>-->
+    <!--</rich:panel>-->
+
+    <!--<h:form var="productDescription" value="#{requestDetailsController.requestDescription}">-->
+    <!--<h:outputLabel for="serial">Serial Number:</h:outputLabel>-->
+    <!--<h:outputText id="serial" value="#{productDescription.serial}"/>-->
+    <!--<br/>-->
+    <!--<br/>-->
+    <!--</h:form>-->
+
+</ui:composition>
