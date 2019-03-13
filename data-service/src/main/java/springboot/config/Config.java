@@ -22,15 +22,15 @@ public class Config extends WsConfigurerAdapter
         MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(applicationContext);
         servlet.setTransformWsdlLocations(true);
-        return new ServletRegistrationBean(servlet, "/service/*");
+        return new ServletRegistrationBean(servlet, "/ws/*");
     }
 
-    @Bean(name = "CurrentDateWsdl")
+    @Bean(name = "date")
     public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema dateSchema)
     {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("CurrentDatePort");
-        wsdl11Definition.setLocationUri("/service/date");
+        wsdl11Definition.setLocationUri("/ws");
         wsdl11Definition.setTargetNamespace("http://localhost:8080/xml/date");
         wsdl11Definition.setSchema(dateSchema);
         return wsdl11Definition;
