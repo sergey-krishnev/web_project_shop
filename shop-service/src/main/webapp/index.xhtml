@@ -3,46 +3,48 @@
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:rich="http://richfaces.org/rich">
-            <!--<h:form>-->
-                <rich:dataTable var="requestData" value="#{requestController.requests}">
-                    <f:facet name="header">
-                        <rich:columnGroup>
-                            <rich:column>
-                                <h:outputText value="# Id"/>
-                            </rich:column>
-                            <rich:column>
-                                <h:outputText value="Customer Name"/>
-                            </rich:column>
-                            <rich:column>
-                                <h:outputText value="Customer Address"/>
-                            </rich:column>
-                            <rich:column>
-                                <h:outputText value="Sum"/>
-                            </rich:column>
-                            <rich:column>
-                                <h:outputText value="Description"/>
-                            </rich:column>
-                        </rich:columnGroup>
-                    </f:facet>
+    <h:form id="request">
+        <rich:dataTable var="requestData" value="#{requestController.requests}">
+            <f:facet name="header">
+                <rich:columnGroup>
                     <rich:column>
-                        <h:outputText value="#{requestData.id}" />
+                        <h:outputText value="# Request number"/>
                     </rich:column>
                     <rich:column>
-                        <h:outputText value="#{requestData.customerName}" />
+                        <h:outputText value="Customer Name"/>
                     </rich:column>
                     <rich:column>
-                        <h:outputText value="#{requestData.customerAddress}"/>
+                        <h:outputText value="Customer Address"/>
                     </rich:column>
                     <rich:column>
-                        <h:outputText value="#{requestData.sum}"/>
+                        <h:outputText value="Sum"/>
                     </rich:column>
-                    <!--<rich:column>-->
-                            <!--<h:commandButton value="Description" actionListener="#{requestDetailsController.attrListener}">-->
-                                <!--<f:attribute name="action" value="#{requestDetailsData.id}" />-->
-                            <!--</h:commandButton>-->
-                    <!--</rich:column>-->
-                </rich:dataTable>
+                    <rich:column>
+                        <h:outputText value="Description"/>
+                    </rich:column>
+                </rich:columnGroup>
+            </f:facet>
+            <rich:column>
+                <h:outputText value="#{requestData.id}"/>
+            </rich:column>
+            <rich:column>
+                <h:outputText value="#{requestData.customerName}"/>
+            </rich:column>
+            <rich:column>
+                <h:outputText value="#{requestData.customerAddress}"/>
+            </rich:column>
+            <rich:column>
+                <h:outputText value="#{requestData.sum}"/>
+            </rich:column>
+            <rich:column>
+            <h:commandButton value="Description" action="#{requestController.setAction}">
+                <f:param name="action" value="#{requestData.id}" />
+            </h:commandButton>
+            </rich:column>
+        </rich:dataTable>
+    </h:form>
 
+<h:form id="productDescription">
     <rich:dataTable var="productDescriptionData" value="#{requestController.request.productDescriptions}">
         <f:facet name="header">
             <rich:columnGroup>
@@ -78,6 +80,7 @@
         <!--</h:commandButton>-->
         <!--</rich:column>-->
     </rich:dataTable>
+</h:form>
 
 
             <!--</h:form>-->

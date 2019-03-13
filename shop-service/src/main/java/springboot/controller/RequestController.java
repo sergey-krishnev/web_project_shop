@@ -8,7 +8,9 @@ import springboot.model.ProductDescription;
 import springboot.model.Request;
 import springboot.service.RequestService;
 
+import javax.faces.context.FacesContext;
 import java.util.List;
+import java.util.Map;
 
 @Scope(value = "session")
 @Component(value = "requestController")
@@ -28,12 +30,24 @@ public class RequestController {
 //
 //    }
 
+    private String action="1";
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction() {
+        Map<String,String> params =
+                FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        this.action = params.get("action");
+    }
+
     public List<Request> getRequests() {
         return requestService.findAll();
     }
 
     public Request getRequest() {
-        return requestService.findById(1);
+        return requestService.findById(Integer.parseInt(getAction()));
     }
 
 //    public RequestDetails getRequestDetails() {
