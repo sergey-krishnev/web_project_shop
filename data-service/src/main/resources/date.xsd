@@ -1,0 +1,11 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://localhost:8080/xml/date"
+           targetNamespace="http://localhost:8080/xml/date" elementFormDefault="qualified">
+
+    <xs:element name="getCurrentDate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="date" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
