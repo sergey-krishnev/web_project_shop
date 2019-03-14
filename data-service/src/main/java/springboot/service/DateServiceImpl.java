@@ -1,17 +1,18 @@
 package springboot.service;
 
 
+import org.springframework.stereotype.Component;
+
 import javax.jws.WebService;
-import javax.ws.rs.Path;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-@Path("/ws/date")
-@WebService(name="service", targetNamespace=CurrentDateEndpoint.NAMESPACE_URI)
-public class CurrentDateEndpointImpl implements CurrentDateEndpoint {
+@Component(value = "dateService")
+@WebService
+public class DateServiceImpl implements DateService {
 
-    @Override
     public String getCurrentDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         return sdf.format(timestamp);
     }
