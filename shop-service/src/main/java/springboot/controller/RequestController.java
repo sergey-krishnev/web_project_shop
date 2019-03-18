@@ -1,6 +1,5 @@
 package springboot.controller;
 
-import org.ocpsoft.rewrite.el.ELBeanName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -16,7 +15,6 @@ import java.util.Map;
 
 @Scope(value = "session")
 @Component(value = "requestController")
-@ELBeanName(value = "requestController")
 //@Join(path = "/request", to = "/index.jsf")
 public class RequestController {
 

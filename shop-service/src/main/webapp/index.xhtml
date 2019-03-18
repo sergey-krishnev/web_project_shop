@@ -1,9 +1,11 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j"
                 xmlns:rich="http://richfaces.org/rich">
-    <h:form id="request">
+    <f:view>
+        <h:head>
+        </h:head>
+        <h:body>
+        <h:form id="request">
         <rich:dataTable var="requestData" value="#{requestController.requests}">
             <f:facet name="header">
                 <rich:columnGroup>
@@ -24,6 +26,7 @@
                     </rich:column>
                 </rich:columnGroup>
             </f:facet>
+            <rich:columnGroup>
             <rich:column>
                 <h:outputText value="#{requestData.id}"/>
             </rich:column>
@@ -41,6 +44,7 @@
                 <f:param name="action" value="#{requestData.id}" />
             </h:commandButton>
             </rich:column>
+            </rich:columnGroup>
         </rich:dataTable>
     </h:form>
 
@@ -74,62 +78,10 @@
         <rich:column>
             <h:outputText value="#{productDescriptionData.date}"/>
         </rich:column>
-        <!--<rich:column>-->
-        <!--<h:commandButton value="Description" actionListener="#{requestDetailsController.attrListener}">-->
-        <!--<f:attribute name="action" value="#{requestDetailsData.id}" />-->
-        <!--</h:commandButton>-->
-        <!--</rich:column>-->
     </rich:dataTable>
 </h:form>
+
     <h:outputText value="#{requestController.date}"/>
-
-
-            <!--</h:form>-->
-        <!--<h3>Product Description</h3>-->
-    <!--<rich:panel>-->
-        <!--&lt;!&ndash;<h:form>&ndash;&gt;-->
-            <!--&lt;!&ndash;<h:outputLabel for="serial">Serial Number:</h:outputLabel>&ndash;&gt;-->
-            <!--&lt;!&ndash;<h:outputText id="serial" value="#{requestDetailsController.requestDetails.productDescription.serial}"/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<h:outputLabel for="product-name">Product Name:</h:outputLabel>&ndash;&gt;-->
-            <!--&lt;!&ndash;<h:outputText id="product-name" value="#{requestDetailsController.requestDetails.productDescription.name}"/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<h:outputLabel for="description">Description:</h:outputLabel>&ndash;&gt;-->
-            <!--&lt;!&ndash;<h:outputText  id="description" value="#{requestDetailsController.requestDetails.productDescription.description}"/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<h:outputLabel for="date">Date:</h:outputLabel>&ndash;&gt;-->
-            <!--&lt;!&ndash;<h:outputText  id="date" value="#{requestDetailsController.requestDetails.productDescription.date}"/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
-            <!--&lt;!&ndash;<br/>&ndash;&gt;-->
-        <!--&lt;!&ndash;</h:form>&ndash;&gt;-->
-        <!--<h:form var="productDescription" value="#{requestDetailsController.requestDescription}">-->
-            <!--<h:outputLabel for="serial">Serial Number:</h:outputLabel>-->
-            <!--<h:outputText id="serial" value="#{productDescription.serial}"/>-->
-            <!--<br/>-->
-            <!--<br/>-->
-            <!--<h:outputLabel for="product-name">Product Name:</h:outputLabel>-->
-            <!--<h:outputText id="product-name" value="#{productDescription.name}"/>-->
-            <!--<br/>-->
-            <!--<br/>-->
-            <!--<h:outputLabel for="description">Description:</h:outputLabel>-->
-            <!--<h:outputText  id="description" value="#{productDescription.description}"/>-->
-            <!--<br/>-->
-            <!--<br/>-->
-            <!--<h:outputLabel for="date">Date:</h:outputLabel>-->
-            <!--<h:outputText  id="date" value="#{productDescription.date}"/>-->
-            <!--<br/>-->
-            <!--<br/>-->
-        <!--</h:form>-->
-    <!--</rich:panel>-->
-
-    <!--<h:form var="productDescription" value="#{requestDetailsController.requestDescription}">-->
-    <!--<h:outputLabel for="serial">Serial Number:</h:outputLabel>-->
-    <!--<h:outputText id="serial" value="#{productDescription.serial}"/>-->
-    <!--<br/>-->
-    <!--<br/>-->
-    <!--</h:form>-->
-
+        </h:body>
+    </f:view>
 </ui:composition>
