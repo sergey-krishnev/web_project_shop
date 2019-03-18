@@ -4,11 +4,13 @@ import org.ocpsoft.rewrite.el.ELBeanName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import springboot.client.DateClient;
 import springboot.model.ProductDescription;
 import springboot.model.Request;
 import springboot.service.RequestService;
 
 import javax.faces.context.FacesContext;
+import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +22,9 @@ public class RequestController {
 
     @Autowired
     private RequestService requestService;
+
+    @Autowired
+    private DateClient dateClient;
 
 //    String action = "1";
 //
@@ -53,4 +58,7 @@ public class RequestController {
 //    public RequestDetails getRequestDetails() {
 //        return requestService.findById(Integer.parseInt(action));
 //    }
+    public String getDate() throws MalformedURLException {
+        return dateClient.getDate();
+    }
 }

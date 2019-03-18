@@ -148,24 +148,37 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>0.13.1</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>1.12</version>
                 <executions>
                     <execution>
+                        <id>wsimport-from-jdk</id>
                         <goals>
-                            <goal>generate</goal>
+                            <goal>wsimport</goal>
                         </goals>
                     </execution>
                 </executions>
                 <configuration>
-                    <schemaLanguage>WSDL</schemaLanguage>
-                    <generatePackage>date.wsdl</generatePackage>
-                    <schemas>
-                        <schema>
-                            <url>http://localhost:8080/service/date/CurrentDateWsdl.wsdl</url>
-                        </schema>
-                    </schemas>
+                    <!-- using wsdl from an url -->
+                    <wsdlUrls>
+                        <wsdlUrl>
+                            http://localhost:8080/date?wsdl
+                        </wsdlUrl>
+                    </wsdlUrls>
+                    <!-- or using wsdls file directory -->
+                    <!-- <wsdlDirectory>src/wsdl</wsdlDirectory> -->
+                    <!-- which wsdl file -->
+                    <!-- <wsdlFiles> -->
+                    <!-- <wsdlFile>myWSDL.wsdl</wsdlFile> -->
+                    <!--</wsdlFiles> -->
+                    <!-- Keep generated files -->
+                    <keep>true</keep>
+                    <!-- Package name -->
+                    <packageName>springboot.service</packageName>
+                    <!-- generated source files destination-->
+                    <sourceDestDir>src/main/java</sourceDestDir>
+                    <sei/>
                 </configuration>
             </plugin>
         </plugins>
