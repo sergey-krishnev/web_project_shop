@@ -26,4 +26,10 @@ public class RequestServiceImpl implements RequestService {
     public Request findById(Integer id) {
         return requestRepository.findById(id).get();
     }
+
+    @Transactional
+    @Override
+    public void addRequest(Request request) {
+        requestRepository.save(request);
+    }
 }

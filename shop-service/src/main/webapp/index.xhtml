@@ -1,87 +1,116 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:a4j="http://richfaces.org/a4j"
                 xmlns:rich="http://richfaces.org/rich">
     <f:view>
         <h:head>
         </h:head>
         <h:body>
-        <h:form id="request">
-        <rich:dataTable var="requestData" value="#{requestController.requests}">
-            <f:facet name="header">
-                <rich:columnGroup>
-                    <rich:column>
-                        <h:outputText value="# Request number"/>
-                    </rich:column>
-                    <rich:column>
-                        <h:outputText value="Customer Name"/>
-                    </rich:column>
-                    <rich:column>
-                        <h:outputText value="Customer Address"/>
-                    </rich:column>
-                    <rich:column>
-                        <h:outputText value="Sum"/>
-                    </rich:column>
-                    <rich:column>
-                        <h:outputText value="Description"/>
-                    </rich:column>
-                </rich:columnGroup>
-            </f:facet>
-            <rich:columnGroup>
-            <rich:column>
-                <h:outputText value="#{requestData.id}"/>
-            </rich:column>
-            <rich:column>
-                <h:outputText value="#{requestData.customerName}"/>
-            </rich:column>
-            <rich:column>
-                <h:outputText value="#{requestData.customerAddress}"/>
-            </rich:column>
-            <rich:column>
-                <h:outputText value="#{requestData.sum}"/>
-            </rich:column>
-            <rich:column>
-            <h:commandButton value="Description" action="#{requestController.setAction}">
-                <f:param name="action" value="#{requestData.id}" />
-            </h:commandButton>
-            </rich:column>
-            </rich:columnGroup>
-        </rich:dataTable>
-    </h:form>
+            <rich:panel style="text-align:center;">
+                <f:facet name="header">
+                    <h:outputText value="Current date: #{requestController.date}"/>
+                </f:facet>
+                <h:form id="request">
+                    <rich:dataTable var="requestData" value="#{requestController.requests}">
+                        <f:facet name="header">
+                            <rich:columnGroup>
+                                <rich:column>
+                                    <h:outputText value="# Request number"/>
+                                </rich:column>
+                                <rich:column>
+                                    <h:outputText value="Customer Name"/>
+                                </rich:column>
+                                <rich:column>
+                                    <h:outputText value="Customer Address"/>
+                                </rich:column>
+                                <rich:column>
+                                    <h:outputText value="Sum"/>
+                                </rich:column>
+                                <rich:column>
+                                    <h:outputText value="Description"/>
+                                </rich:column>
+                            </rich:columnGroup>
+                        </f:facet>
+                        <rich:columnGroup>
+                            <rich:column>
+                                <h:outputText value="#{requestData.id}"/>
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="#{requestData.customerName}"/>
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="#{requestData.customerAddress}"/>
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="#{requestData.sum}"/>
+                            </rich:column>
+                            <rich:column>
+                                <h:commandButton value="Description" action="#{requestController.setAction}">
+                                    <f:param name="action" value="#{requestData.id}"/>
+                                </h:commandButton>
+                            </rich:column>
+                        </rich:columnGroup>
+                    </rich:dataTable>
+                </h:form>
 
-<h:form id="productDescription">
-    <rich:dataTable var="productDescriptionData" value="#{requestController.request.productDescriptions}">
-        <f:facet name="header">
-            <rich:columnGroup>
-                <rich:column>
-                    <h:outputText value="Serial"/>
-                </rich:column>
-                <rich:column>
-                    <h:outputText value="Name"/>
-                </rich:column>
-                <rich:column>
+                <h:form id="productDescription">
+                    <rich:dataTable var="productDescriptionData"
+                                    value="#{requestController.request.productDescriptions}">
+                        <f:facet name="header">
+                            <rich:columnGroup>
+                                <rich:column>
+                                    <h:outputText value="Serial"/>
+                                </rich:column>
+                                <rich:column>
+                                    <h:outputText value="Name"/>
+                                </rich:column>
+                                <rich:column>
+                                    <h:outputText value="Description"/>
+                                </rich:column>
+                                <rich:column>
+                                    <h:outputText value="Date"/>
+                                </rich:column>
+                            </rich:columnGroup>
+                        </f:facet>
+                        <rich:column>
+                            <h:outputText value="#{productDescriptionData.serial}"/>
+                        </rich:column>
+                        <rich:column>
+                            <h:outputText value="#{productDescriptionData.name}"/>
+                        </rich:column>
+                        <rich:column>
+                            <h:outputText value="#{productDescriptionData.description}"/>
+                        </rich:column>
+                        <rich:column>
+                            <h:outputText value="#{productDescriptionData.date}"/>
+                        </rich:column>
+                    </rich:dataTable>
+                </h:form>
+            </rich:panel>
+
+            <h:form>
+            <br/>
+            <rich:panel header="Request" style="width:450px">
+                <h:panelGrid columns="2" width="100%"  >
+
+                    <h:outputText value="Customer name"/>
+                    <h:inputText value="#{requestController.customerName}"/>
+
+                    <h:outputText value="Address"/>
+                    <h:inputText value="#{requestController.customerAddress}"/>
+
+                    <h:outputText value="Sum"/>
+                    <h:inputText value="#{requestController.sum}"/>
+
                     <h:outputText value="Description"/>
-                </rich:column>
-                <rich:column>
-                    <h:outputText value="Date"/>
-                </rich:column>
-            </rich:columnGroup>
-        </f:facet>
-        <rich:column>
-            <h:outputText value="#{productDescriptionData.serial}" />
-        </rich:column>
-        <rich:column>
-            <h:outputText value="#{productDescriptionData.name}" />
-        </rich:column>
-        <rich:column>
-            <h:outputText value="#{productDescriptionData.description}"/>
-        </rich:column>
-        <rich:column>
-            <h:outputText value="#{productDescriptionData.date}"/>
-        </rich:column>
-    </rich:dataTable>
-</h:form>
+                    <h:inputText value="#{requestController.description}"/>
 
-    <h:outputText value="#{requestController.date}"/>
+                    <h:commandButton value="Insert"
+                                     actionListener="#{requestController.insertAction}">
+                    </h:commandButton>
+                </h:panelGrid>
+            </rich:panel>
+            </h:form>
         </h:body>
     </f:view>
 </ui:composition>

@@ -10,4 +10,6 @@ public interface RequestService {
     List<Request> findAll();
 
     Request findById(Integer id);
+
+    void addRequest(Request request);
 }

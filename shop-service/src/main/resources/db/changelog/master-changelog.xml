@@ -6,7 +6,7 @@
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.1.xsd">
     <changeSet id="1" author="user">
         <createTable tableName="request">
-            <column name="id" type="int">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints nullable="false" unique="true" primaryKey="true"/>
             </column>
             <column name="customer_name" type="varchar(30)">
@@ -21,13 +21,10 @@
         </createTable>
 
         <createTable tableName="request_details">
-            <column name="id" type="int">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints nullable="false" unique="true" primaryKey="true"/>
             </column>
             <column name="product_serial" type="varchar(30)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="count" type="int">
                 <constraints nullable="false"/>
             </column>
             <column name="request_id" type="int">
@@ -59,22 +56,18 @@
                                  referencedTableName="request" referencedColumnNames="id"/>
 
     </changeSet>
-
     <changeSet id="2" author="user">
         <insert tableName="request">
-            <column name="id" value="1"/>
             <column name="customer_name" value="vsvesdv"/>
             <column name="customer_address" value="sdfvfdbfgbfdvdf"/>
             <column name="sum" value="15"/>
         </insert>
         <insert tableName="request">
-            <column name="id" value="2"/>
             <column name="customer_name" value="dsvfdx"/>
             <column name="customer_address" value="dscvzvxcwgyh"/>
             <column name="sum" value="10"/>
         </insert>
         <insert tableName="request">
-            <column name="id" value="3"/>
             <column name="customer_name" value="asxsdcxc"/>
             <column name="customer_address" value="ioloililu"/>
             <column name="sum" value="13"/>
@@ -100,19 +93,16 @@
         <insert tableName="request_details">
             <column name="id" value="1"/>
             <column name="product_serial" value="33333dd1"/>
-            <column name="count" value="4"/>
             <column name="request_id" value="3"/>
         </insert>
         <insert tableName="request_details">
             <column name="id" value="2"/>
             <column name="product_serial" value="22222jjj3"/>
-            <column name="count" value="20"/>
             <column name="request_id" value="1"/>
         </insert>
         <insert tableName="request_details">
             <column name="id" value="3"/>
             <column name="product_serial" value="11111ooo5"/>
-            <column name="count" value="3"/>
             <column name="request_id" value="2"/>
         </insert>
     </changeSet>
