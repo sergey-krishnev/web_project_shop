@@ -6,7 +6,7 @@
         <h:head>
         </h:head>
         <h:body>
-            <rich:panel style="text-align:center;">
+            <rich:panel>
                 <f:facet name="header">
                     <h:outputText value="Current date: #{requestController.date}"/>
                 </f:facet>
@@ -86,31 +86,12 @@
                         </rich:column>
                     </rich:dataTable>
                 </h:form>
+                <h:form>
+                <h:commandButton value="Add request"
+                                 action="add?faces-redirect=true">
+                </h:commandButton>
+                </h:form>
             </rich:panel>
-
-            <h:form>
-            <br/>
-            <rich:panel header="Request" style="width:450px">
-                <h:panelGrid columns="2" width="100%"  >
-
-                    <h:outputText value="Customer name"/>
-                    <h:inputText value="#{requestController.customerName}"/>
-
-                    <h:outputText value="Address"/>
-                    <h:inputText value="#{requestController.customerAddress}"/>
-
-                    <h:outputText value="Sum"/>
-                    <h:inputText value="#{requestController.sum}"/>
-
-                    <h:outputText value="Description"/>
-                    <h:inputText value="#{requestController.description}"/>
-
-                    <h:commandButton value="Insert"
-                                     actionListener="#{requestController.insertAction}">
-                    </h:commandButton>
-                </h:panelGrid>
-            </rich:panel>
-            </h:form>
         </h:body>
     </f:view>
 </ui:composition>
