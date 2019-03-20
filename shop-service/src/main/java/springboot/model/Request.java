@@ -14,7 +14,6 @@ import java.util.List;
 public class Request {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
     private int id;
 
     @NotNull

@@ -4,13 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import springboot.client.DateClient;
+import springboot.dto.RequestDTO;
 import springboot.model.ProductDescription;
 import springboot.model.Request;
+import springboot.service.ProductDescriptionService;
 import springboot.service.RequestService;
 
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -26,10 +29,11 @@ public class RequestController {
 
     private String sum;
 
-    private String description;
-
     @Autowired
     private RequestService requestService;
+
+    @Autowired
+    private ProductDescriptionService productDescriptionService;
 
     @Autowired
     private DateClient dateClient;
@@ -60,14 +64,6 @@ public class RequestController {
         this.sum = sum;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getAction() {
         return action;
     }
@@ -78,20 +74,24 @@ public class RequestController {
         this.action = params.get("action");
     }
 
-    public List<Request> getRequests() {
+    public List<RequestDTO> getRequests() {
         return requestService.findAll();
     }
 
-    public Request getRequest() {
+    public RequestDTO getRequest() {
         return requestService.findById(Integer.parseInt(getAction()));
+    }
+
+    public List<ProductDescription> getProducts() {
+        return productDescriptionService.findAll();
     }
 
     public String getDate() throws MalformedURLException {
         return dateClient.getDate();
     }
 
-    public void insertAction() {
-        Request request = new Request();
+    public void insertRequestAction() {
+        RequestDTO request = new RequestDTO();
         request.setCustomerName(getCustomerName());
         request.setCustomerAddress(getCustomerAddress());
         request.setSum(Integer.parseInt(getSum()));

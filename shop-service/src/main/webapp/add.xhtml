@@ -20,18 +20,58 @@
                         <h:outputText value="Sum"/>
                         <h:inputText value="#{requestController.sum}"/>
 
-                        <h:outputText value="Description"/>
-                        <h:inputText value="#{requestController.description}"/>
+                    </h:panelGrid>
+                </rich:panel>
+                    <h:form>
+                        <rich:panel header="Choose the products" style="width:450px">
+                        <rich:dataTable var="products"
+                                        value="#{requestController.products}">
+                            <f:facet name="header">
+                                <rich:columnGroup>
+                                    <rich:column>
+                                        <h:outputText value="Serial"/>
+                                    </rich:column>
+                                    <rich:column>
+                                        <h:outputText value="Name"/>
+                                    </rich:column>
+                                    <rich:column>
+                                        <h:outputText value="Description"/>
+                                    </rich:column>
+                                    <rich:column>
+                                        <h:outputText value="Date"/>
+                                    </rich:column>
+                                    <rich:column>
+                                        <h:outputText value="Added product"/>
+                                    </rich:column>
+                                </rich:columnGroup>
+                            </f:facet>
+                            <rich:column>
+                                <h:outputText value="#{products.serial}"/>
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="#{products.name}"/>
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="#{products.description}"/>
+                            </rich:column>
+                            <rich:column>
+                                <h:outputText value="#{products.date}"/>
+                            </rich:column>
+                            <rich:column>
+                                    <h:selectBooleanCheckbox value="true" />
+                            </rich:column>
+                        </rich:dataTable>
+                        </rich:panel>
 
                         <h:commandButton value="Insert"
-                                         actionListener="#{requestController.insertAction}"
+                                         actionListener="#{requestController.insertRequestAction}"
                                          action="index?faces-redirect=true">
                         </h:commandButton>
                         <h:commandButton value="Cancel"
                                          action="index?faces-redirect=true">
                         </h:commandButton>
-                    </h:panelGrid>
-                </rich:panel>
+
+                    </h:form>
             </h:form>
         </h:body>
     </f:view>

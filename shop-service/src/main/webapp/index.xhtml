@@ -54,7 +54,7 @@
                 </h:form>
 
                 <h:form id="productDescription">
-                    <rich:dataTable var="productDescriptionData"
+                    <rich:dataTable var="products"
                                     value="#{requestController.request.productDescriptions}">
                         <f:facet name="header">
                             <rich:columnGroup>
@@ -73,16 +73,16 @@
                             </rich:columnGroup>
                         </f:facet>
                         <rich:column>
-                            <h:outputText value="#{productDescriptionData.serial}"/>
+                            <h:outputText value="#{products.serial}"/>
                         </rich:column>
                         <rich:column>
-                            <h:outputText value="#{productDescriptionData.name}"/>
+                            <h:outputText value="#{products.name}"/>
                         </rich:column>
                         <rich:column>
-                            <h:outputText value="#{productDescriptionData.description}"/>
+                            <h:outputText value="#{products.description}"/>
                         </rich:column>
                         <rich:column>
-                            <h:outputText value="#{productDescriptionData.date}"/>
+                            <h:outputText value="#{products.date}"/>
                         </rich:column>
                     </rich:dataTable>
                 </h:form>

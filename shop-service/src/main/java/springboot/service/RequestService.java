@@ -1,5 +1,6 @@
 package springboot.service;
 
+import springboot.dto.RequestDTO;
 import springboot.model.ProductDescription;
 import springboot.model.Request;
 
@@ -7,9 +8,9 @@ import java.util.List;
 
 public interface RequestService {
 
-    List<Request> findAll();
+    List<RequestDTO> findAll();
 
-    Request findById(Integer id);
+    RequestDTO findById(int id);
 
-    void addRequest(Request request);
+    void addRequest(RequestDTO requestDTO);
 }
