@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import springboot.client.DateClient;
+import springboot.dto.ProductDescriptionDTO;
 import springboot.dto.RequestDTO;
 import springboot.model.ProductDescription;
 import springboot.model.Request;
@@ -82,7 +83,7 @@ public class RequestController {
         return requestService.findById(Integer.parseInt(getAction()));
     }
 
-    public List<ProductDescription> getProducts() {
+    public List<ProductDescriptionDTO> getProducts() {
         return productDescriptionService.findAll();
     }
 

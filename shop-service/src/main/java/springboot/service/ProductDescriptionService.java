@@ -1,11 +1,11 @@
 package springboot.service;
 
-import springboot.model.ProductDescription;
+import springboot.dto.ProductDescriptionDTO;
 
 import java.util.List;
 
 public interface ProductDescriptionService {
 
-    List<ProductDescription> findAll();
+    List<ProductDescriptionDTO> findAll();
 
 }
