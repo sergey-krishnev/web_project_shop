@@ -6,17 +6,16 @@ import org.springframework.stereotype.Component;
 import springboot.client.DateClient;
 import springboot.dto.ProductDescriptionDTO;
 import springboot.dto.RequestDTO;
-import springboot.model.ProductDescription;
-import springboot.model.Request;
 import springboot.service.ProductDescriptionService;
 import springboot.service.RequestService;
 
 import javax.faces.context.FacesContext;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+
 
 @Scope(value = "session")
 
@@ -35,6 +34,10 @@ public class RequestController {
 
     @Autowired
     private ProductDescriptionService productDescriptionService;
+
+    private List<ProductDescriptionDTO> products;
+
+    private ProductDescriptionDTO product;
 
     @Autowired
     private DateClient dateClient;
@@ -65,6 +68,22 @@ public class RequestController {
         this.sum = sum;
     }
 
+    public void setProducts(List<ProductDescriptionDTO> products) {
+        this.products = products;
+    }
+
+    public ProductDescriptionDTO getProduct() {
+        return product;
+    }
+
+    public void setProduct(ProductDescriptionDTO product) {
+        this.product = product;
+    }
+
+    public List<ProductDescriptionDTO> getProducts() {
+        return products;
+    }
+
     public String getAction() {
         return action;
     }
@@ -83,19 +102,35 @@ public class RequestController {
         return requestService.findById(Integer.parseInt(getAction()));
     }
 
-    public List<ProductDescriptionDTO> getProducts() {
-        return productDescriptionService.findAll();
-    }
-
     public String getDate() throws MalformedURLException {
         return dateClient.getDate();
     }
 
-    public void insertRequestAction() {
+
+    public String insertRequestAction() {
         RequestDTO request = new RequestDTO();
         request.setCustomerName(getCustomerName());
         request.setCustomerAddress(getCustomerAddress());
         request.setSum(Integer.parseInt(getSum()));
+
+        setCheckedProducts(request);
         requestService.addRequest(request);
+        return "index?faces-redirect=true";
+    }
+
+    public void setCheckedProducts(RequestDTO request) {
+        List<ProductDescriptionDTO> productDescriptionDTOList = getProducts();
+        List<ProductDescriptionDTO> selectedProducts = new ArrayList<>();
+        for (ProductDescriptionDTO product : productDescriptionDTOList) {
+            if (product.isSelected()) {
+                selectedProducts.add(product);
+            }
+        }
+        request.setProductDescriptions(selectedProducts);
+    }
+
+    public String aggregateAllProducts(){
+        setProducts(productDescriptionService.findAll());
+        return "add?faces-redirect=true";
     }
 }

@@ -14,7 +14,7 @@ import java.sql.Date;
 public class ProductDescription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String serial;
+    private Long id;
 
     @NotNull
     private String name;

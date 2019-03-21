@@ -6,7 +6,7 @@
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.1.xsd">
     <changeSet id="1" author="user">
         <createTable tableName="request">
-            <column name="id" type="int" autoIncrement="true">
+            <column name="id" type="long" autoIncrement="true">
                 <constraints nullable="false" unique="true" primaryKey="true"/>
             </column>
             <column name="customer_name" type="varchar(30)">
@@ -21,19 +21,19 @@
         </createTable>
 
         <createTable tableName="request_details">
-            <column name="id" type="int" autoIncrement="true">
+            <column name="id" type="long" autoIncrement="true">
                 <constraints nullable="false" unique="true" primaryKey="true"/>
             </column>
-            <column name="product_serial" type="varchar(30)">
+            <column name="product_id" type="long">
                 <constraints nullable="false"/>
             </column>
-            <column name="request_id" type="int">
+            <column name="request_id" type="long">
                 <constraints nullable="false"/>
             </column>
         </createTable>
 
         <createTable tableName="product_description">
-            <column name="serial" type="varchar(30)">
+            <column name="id" type="long" autoIncrement="true">
                 <constraints nullable="false" unique="true" primaryKey="true"/>
             </column>
             <column name="name" type="varchar(30)">
@@ -48,11 +48,9 @@
         </createTable>
 
 
-        <addForeignKeyConstraint baseTableName="request_details" baseColumnNames="product_serial"
-                                 constraintName="fk_serial_request_details"
-                                 referencedTableName="product_description" referencedColumnNames="serial"/>
+        <addForeignKeyConstraint baseTableName="request_details" baseColumnNames="product_id"
+                                 referencedTableName="product_description" referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="request_details" baseColumnNames="request_id"
-                                 constraintName="fk_request_id_request_details"
                                  referencedTableName="request" referencedColumnNames="id"/>
 
     </changeSet>
@@ -73,19 +71,16 @@
             <column name="sum" value="13"/>
         </insert>
         <insert tableName="product_description">
-            <column name="serial" value="11111ooo5"/>
             <column name="name" value="fesdrefdbf"/>
             <column name="description" value="dssssssgftrh"/>
             <column name="date" value="01-01-01"/>
         </insert>
         <insert tableName="product_description">
-            <column name="serial" value="22222jjj3"/>
             <column name="name" value="fesdjrtyjtyujuiktf"/>
             <column name="description" value="qwdwgerhfgbnuik,"/>
             <column name="date" value="01-01-01"/>
         </insert>
         <insert tableName="product_description">
-            <column name="serial" value="33333dd1"/>
             <column name="name" value="piuimkyuvddbf"/>
             <column name="description" value="awrfeswf eerg reghrt sgf"/>
             <column name="date" value="01-01-01"/>

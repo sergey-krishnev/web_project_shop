@@ -3,6 +3,7 @@
                 xmlns:a4j="http://richfaces.org/a4j"
                 xmlns:rich="http://richfaces.org/rich">
     <f:view>
+
         <h:head>
         </h:head>
         <h:body>
@@ -24,8 +25,7 @@
                 </rich:panel>
                     <h:form>
                         <rich:panel header="Choose the products" style="width:450px">
-                        <rich:dataTable var="products"
-                                        value="#{requestController.products}">
+                        <rich:dataTable var="product" value="#{requestController.products}">
                             <f:facet name="header">
                                 <rich:columnGroup>
                                     <rich:column>
@@ -46,31 +46,28 @@
                                 </rich:columnGroup>
                             </f:facet>
                             <rich:column>
-                                <h:outputText value="#{products.serial}"/>
+                                <h:outputText value="#{product.serial}"/>
                             </rich:column>
                             <rich:column>
-                                <h:outputText value="#{products.name}"/>
+                                <h:outputText value="#{product.name}"/>
                             </rich:column>
                             <rich:column>
-                                <h:outputText value="#{products.description}"/>
+                                <h:outputText value="#{product.description}"/>
                             </rich:column>
                             <rich:column>
-                                <h:outputText value="#{products.date}"/>
+                                <h:outputText value="#{product.date}"/>
                             </rich:column>
                             <rich:column>
-                                    <h:selectBooleanCheckbox value="#{products.check}" />
+                                <h:selectBooleanCheckbox value="#{product.selected}" />
                             </rich:column>
                         </rich:dataTable>
+                            <h:commandButton value="Insert"
+                                             action="#{requestController.insertRequestAction}">
+                            </h:commandButton>
+                            <h:commandButton value="Cancel"
+                                             action="index?faces-redirect=true">
+                            </h:commandButton>
                         </rich:panel>
-
-                        <h:commandButton value="Insert"
-                                         actionListener="#{requestController.insertRequestAction}"
-                                         action="index?faces-redirect=true">
-                        </h:commandButton>
-                        <h:commandButton value="Cancel"
-                                         action="index?faces-redirect=true">
-                        </h:commandButton>
-
                     </h:form>
             </h:form>
         </h:body>

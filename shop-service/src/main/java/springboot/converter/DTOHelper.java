@@ -5,6 +5,8 @@ import springboot.dto.RequestDTO;
 import springboot.model.ProductDescription;
 import springboot.model.Request;
 
+import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +39,17 @@ public class DTOHelper {
             productDescriptionDTO.setDescription(productDescription.getDescription());
             productDescriptionDTO.setDate(df.format(productDescription.getDate()));
             productDescriptions.add(productDescriptionDTO);
+        }
+    }
+
+    public static void productDescriptionDTOToProductDescription(List<ProductDescriptionDTO> productDescriptions, List<ProductDescription> productDescriptionList) {
+        for(ProductDescriptionDTO productDescriptionDTO:productDescriptions) {
+            ProductDescription productDescription = new ProductDescription();
+            productDescription.setSerial(productDescriptionDTO.getSerial());
+            productDescription.setName(productDescriptionDTO.getName());
+            productDescription.setDescription(productDescriptionDTO.getDescription());
+            productDescription.setDate(Date.valueOf(productDescriptionDTO.getDate()));
+            productDescriptionList.add(productDescription);
         }
     }
 

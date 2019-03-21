@@ -13,5 +13,5 @@ public class ProductDescriptionDTO {
 
     private String date;
 
-    private boolean check;
+    private boolean selected;
 }

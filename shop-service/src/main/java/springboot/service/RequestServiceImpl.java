@@ -31,7 +31,7 @@ public class RequestServiceImpl implements RequestService {
 
     @Transactional(readOnly = true)
     @Override
-    public RequestDTO findById(int id) {
+    public RequestDTO findById(long id) {
 
         Request request = requestRepository.findById(id).get();
         RequestDTO requestDTO = new RequestDTO();
@@ -53,6 +53,10 @@ public class RequestServiceImpl implements RequestService {
         request.setCustomerName(requestDTO.getCustomerName());
         request.setCustomerAddress(requestDTO.getCustomerAddress());
         request.setSum(requestDTO.getSum());
+        List<ProductDescriptionDTO> productDescriptions = requestDTO.getProductDescriptions();
+        List<ProductDescription> productDescriptionList = new ArrayList<>();
+        DTOHelper.productDescriptionDTOToProductDescription(productDescriptions,productDescriptionList);
+        request.setProductDescriptions(productDescriptionList);
         requestRepository.save(request);
     }
 }
