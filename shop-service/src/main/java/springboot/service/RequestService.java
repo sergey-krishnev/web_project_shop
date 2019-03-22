@@ -13,4 +13,6 @@ public interface RequestService {
     RequestDTO findById(long id);
 
     void addRequest(RequestDTO requestDTO);
+
+    void updateRequest(RequestDTO requestDTO);
 }

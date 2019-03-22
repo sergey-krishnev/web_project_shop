@@ -59,4 +59,18 @@ public class RequestServiceImpl implements RequestService {
         request.setProductDescriptions(productDescriptionList);
         requestRepository.save(request);
     }
+
+    @Override
+    public void updateRequest(RequestDTO requestDTO) {
+        Request request = new Request();
+        request.setId(requestDTO.getId());
+        request.setCustomerName(requestDTO.getCustomerName());
+        request.setCustomerAddress(requestDTO.getCustomerAddress());
+        request.setSum(requestDTO.getSum());
+        List<ProductDescriptionDTO> productDescriptions = requestDTO.getProductDescriptions();
+        List<ProductDescription> productDescriptionList = new ArrayList<>();
+        DTOHelper.productDescriptionDTOToProductDescription(productDescriptions,productDescriptionList);
+        request.setProductDescriptions(productDescriptionList);
+        requestRepository.save(request);
+    }
 }

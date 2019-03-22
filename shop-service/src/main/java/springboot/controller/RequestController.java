@@ -23,6 +23,8 @@ import java.util.Map;
 //@Join(path = "/request", to = "/index.jsf")
 public class RequestController {
 
+    private Long id;
+
     private String customerName;
 
     private String customerAddress;
@@ -43,6 +45,14 @@ public class RequestController {
     private DateClient dateClient;
 
     private String action="1";
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCustomerName() {
         return customerName;
@@ -118,6 +128,18 @@ public class RequestController {
         return "index?faces-redirect=true";
     }
 
+    public String editRequestAction() {
+        RequestDTO request = new RequestDTO();
+        request.setId(getId());
+        request.setCustomerName(getCustomerName());
+        request.setCustomerAddress(getCustomerAddress());
+        request.setSum(Integer.parseInt(getSum()));
+
+        setCheckedProducts(request);
+        requestService.updateRequest(request);
+        return "index?faces-redirect=true";
+    }
+
     public void setCheckedProducts(RequestDTO request) {
         List<ProductDescriptionDTO> productDescriptionDTOList = getProducts();
         List<ProductDescriptionDTO> selectedProducts = new ArrayList<>();
@@ -158,6 +180,7 @@ public class RequestController {
     }
 
     public void fillRequestFields(RequestDTO requestDTO) {
+        setId(requestDTO.getId());
         setCustomerName(requestDTO.getCustomerName());
         setCustomerAddress(requestDTO.getCustomerAddress());
         setSum(String.valueOf(requestDTO.getSum()));
