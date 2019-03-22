@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ProductDescriptionDTO {
 
-    private String serial;
+    private Long id;
 
     private String name;
 

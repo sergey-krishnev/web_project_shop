@@ -34,7 +34,7 @@ public class DTOHelper {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         for (ProductDescription productDescription : productDescriptionList) {
             ProductDescriptionDTO productDescriptionDTO = new ProductDescriptionDTO();
-            productDescriptionDTO.setSerial(productDescription.getSerial());
+            productDescriptionDTO.setId(productDescription.getId());
             productDescriptionDTO.setName(productDescription.getName());
             productDescriptionDTO.setDescription(productDescription.getDescription());
             productDescriptionDTO.setDate(df.format(productDescription.getDate()));
@@ -45,7 +45,7 @@ public class DTOHelper {
     public static void productDescriptionDTOToProductDescription(List<ProductDescriptionDTO> productDescriptions, List<ProductDescription> productDescriptionList) {
         for(ProductDescriptionDTO productDescriptionDTO:productDescriptions) {
             ProductDescription productDescription = new ProductDescription();
-            productDescription.setSerial(productDescriptionDTO.getSerial());
+            productDescription.setId(productDescriptionDTO.getId());
             productDescription.setName(productDescriptionDTO.getName());
             productDescription.setDescription(productDescriptionDTO.getDescription());
             productDescription.setDate(Date.valueOf(productDescriptionDTO.getDate()));

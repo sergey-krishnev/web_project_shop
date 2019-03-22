@@ -133,4 +133,12 @@ public class RequestController {
         setProducts(productDescriptionService.findAll());
         return "add?faces-redirect=true";
     }
+
+    public String aggregateCheckedProducts(Long id){
+        RequestDTO requestDTO = requestService.findById(id);
+        List<ProductDescriptionDTO> selectedProducts = requestDTO.getProductDescriptions();
+        List<ProductDescriptionDTO> allProducts = productDescriptionService.findAll();
+        
+        return "edit?faces-redirect=true";
+    }
 }

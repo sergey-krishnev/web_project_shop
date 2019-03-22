@@ -9,7 +9,7 @@
         <h:body>
             <h:form>
                 <br/>
-                <rich:panel header="Add request" style="width:450px">
+                <rich:panel header="Edit request" style="width:450px">
                     <h:panelGrid columns="2" width="100%"  >
 
                         <h:outputText value="Customer name"/>
@@ -23,13 +23,13 @@
 
                     </h:panelGrid>
                 </rich:panel>
-                    <h:form>
-                        <rich:panel header="Choose the products" style="width:450px">
+                <h:form>
+                    <rich:panel header="Choose the products" style="width:450px">
                         <rich:dataTable var="product" value="#{requestController.products}">
                             <f:facet name="header">
                                 <rich:columnGroup>
                                     <rich:column>
-                                        <h:outputText value="Id"/>
+                                        <h:outputText value="Serial"/>
                                     </rich:column>
                                     <rich:column>
                                         <h:outputText value="Name"/>
@@ -61,14 +61,14 @@
                                 <h:selectBooleanCheckbox value="#{product.selected}" />
                             </rich:column>
                         </rich:dataTable>
-                            <h:commandButton value="Insert"
-                                             action="#{requestController.insertRequestAction}">
-                            </h:commandButton>
-                            <h:commandButton value="Cancel"
-                                             action="index?faces-redirect=true">
-                            </h:commandButton>
-                        </rich:panel>
-                    </h:form>
+                        <h:commandButton value="Insert"
+                                         action="#{requestController.insertRequestAction}">
+                        </h:commandButton>
+                        <h:commandButton value="Cancel"
+                                         action="index?faces-redirect=true">
+                        </h:commandButton>
+                    </rich:panel>
+                </h:form>
             </h:form>
         </h:body>
     </f:view>

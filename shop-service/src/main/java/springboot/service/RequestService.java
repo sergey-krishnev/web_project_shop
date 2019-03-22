@@ -10,7 +10,7 @@ public interface RequestService {
 
     List<RequestDTO> findAll();
 
-    RequestDTO findById(int id);
+    RequestDTO findById(long id);
 
     void addRequest(RequestDTO requestDTO);
 }

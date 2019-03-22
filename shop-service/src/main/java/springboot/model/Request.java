@@ -28,6 +28,6 @@ public class Request {
     @NotNull
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "request_details", joinColumns = { @JoinColumn(name = "request_id")},
-    inverseJoinColumns = { @JoinColumn(name = "product_serial")})
+    inverseJoinColumns = { @JoinColumn(name = "product_id")})
     private List<ProductDescription> productDescriptions = new ArrayList<>();
 }

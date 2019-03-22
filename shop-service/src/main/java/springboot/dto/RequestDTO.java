@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 public class RequestDTO {
 
-    private int id;
+    private Long id;
 
     private String customerName;
 
