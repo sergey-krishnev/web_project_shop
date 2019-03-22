@@ -130,15 +130,36 @@ public class RequestController {
     }
 
     public String aggregateAllProducts(){
+        cleanRequestFields();
         setProducts(productDescriptionService.findAll());
         return "add?faces-redirect=true";
     }
 
     public String aggregateCheckedProducts(Long id){
         RequestDTO requestDTO = requestService.findById(id);
+        fillRequestFields(requestDTO);
         List<ProductDescriptionDTO> selectedProducts = requestDTO.getProductDescriptions();
         List<ProductDescriptionDTO> allProducts = productDescriptionService.findAll();
-        
+        for (int i=0;i<allProducts.size();i++) {
+            for (ProductDescriptionDTO productDescriptionDTO : selectedProducts) {
+                if (productDescriptionDTO.getId().equals(allProducts.get(i).getId())) {
+                    allProducts.get(i).setSelected(true);
+                }
+            }
+        }
+        setProducts(allProducts);
         return "edit?faces-redirect=true";
+    }
+
+    public void cleanRequestFields() {
+        setCustomerName("");
+        setCustomerAddress("");
+        setSum("");
+    }
+
+    public void fillRequestFields(RequestDTO requestDTO) {
+        setCustomerName(requestDTO.getCustomerName());
+        setCustomerAddress(requestDTO.getCustomerAddress());
+        setSum(String.valueOf(requestDTO.getSum()));
     }
 }
