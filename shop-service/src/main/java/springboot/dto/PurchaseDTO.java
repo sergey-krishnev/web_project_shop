@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class RequestDTO {
+public class PurchaseDTO {
 
     private Long id;
 
@@ -16,5 +16,5 @@ public class RequestDTO {
 
     private int sum;
 
-    private List<ProductDescriptionDTO> productDescriptions = new ArrayList<>();
+    private List<ProductDTO> product = new ArrayList<>();
 }

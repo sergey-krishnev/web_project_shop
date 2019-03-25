@@ -1,8 +1,6 @@
 package springboot.model;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,7 +9,7 @@ import java.util.List;
 
 @Data
 @Entity
-public class Request {
+public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -27,7 +25,7 @@ public class Request {
 
     @NotNull
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "request_details", joinColumns = { @JoinColumn(name = "request_id")},
+    @JoinTable(name = "purchase_details", joinColumns = { @JoinColumn(name = "purchase_id")},
     inverseJoinColumns = { @JoinColumn(name = "product_id")})
-    private List<ProductDescription> productDescriptions = new ArrayList<>();
+    private List<Product> product = new ArrayList<>();
 }

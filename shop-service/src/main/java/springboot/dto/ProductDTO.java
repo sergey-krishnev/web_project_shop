@@ -3,7 +3,7 @@ package springboot.dto;
 import lombok.Data;
 
 @Data
-public class ProductDescriptionDTO {
+public class ProductDTO {
 
     private Long id;
 

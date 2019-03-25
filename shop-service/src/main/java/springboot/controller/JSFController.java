@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import springboot.client.DateClient;
-import springboot.dto.ProductDescriptionDTO;
-import springboot.dto.RequestDTO;
+import springboot.dto.ProductDTO;
+import springboot.dto.PurchaseDTO;
 import springboot.service.ProductDescriptionService;
-import springboot.service.RequestService;
+import springboot.service.PurchaseService;
 
 import javax.faces.context.FacesContext;
 import java.net.MalformedURLException;
@@ -21,7 +21,7 @@ import java.util.Map;
 
 @Component(value = "requestController")
 //@Join(path = "/request", to = "/index.jsf")
-public class RequestController {
+public class JSFController {
 
     private Long id;
 
@@ -32,14 +32,14 @@ public class RequestController {
     private String sum;
 
     @Autowired
-    private RequestService requestService;
+    private PurchaseService purchaseService;
 
     @Autowired
     private ProductDescriptionService productDescriptionService;
 
-    private List<ProductDescriptionDTO> products;
+    private List<ProductDTO> products;
 
-    private ProductDescriptionDTO product;
+    private ProductDTO product;
 
     @Autowired
     private DateClient dateClient;
@@ -78,19 +78,19 @@ public class RequestController {
         this.sum = sum;
     }
 
-    public void setProducts(List<ProductDescriptionDTO> products) {
+    public void setProducts(List<ProductDTO> products) {
         this.products = products;
     }
 
-    public ProductDescriptionDTO getProduct() {
+    public ProductDTO getProduct() {
         return product;
     }
 
-    public void setProduct(ProductDescriptionDTO product) {
+    public void setProduct(ProductDTO product) {
         this.product = product;
     }
 
-    public List<ProductDescriptionDTO> getProducts() {
+    public List<ProductDTO> getProducts() {
         return products;
     }
 
@@ -104,12 +104,12 @@ public class RequestController {
         this.action = params.get("action");
     }
 
-    public List<RequestDTO> getRequests() {
-        return requestService.findAll();
+    public List<PurchaseDTO> getRequests() {
+        return purchaseService.findAll();
     }
 
-    public RequestDTO getRequest() {
-        return requestService.findById(Integer.parseInt(getAction()));
+    public PurchaseDTO getRequest() {
+        return purchaseService.findById(Integer.parseInt(getAction()));
     }
 
     public String getDate() throws MalformedURLException {
@@ -118,37 +118,37 @@ public class RequestController {
 
 
     public String insertRequestAction() {
-        RequestDTO request = new RequestDTO();
+        PurchaseDTO request = new PurchaseDTO();
         request.setCustomerName(getCustomerName());
         request.setCustomerAddress(getCustomerAddress());
         request.setSum(Integer.parseInt(getSum()));
 
         setCheckedProducts(request);
-        requestService.addRequest(request);
+        purchaseService.add(request);
         return "index?faces-redirect=true";
     }
 
     public String editRequestAction() {
-        RequestDTO request = new RequestDTO();
+        PurchaseDTO request = new PurchaseDTO();
         request.setId(getId());
         request.setCustomerName(getCustomerName());
         request.setCustomerAddress(getCustomerAddress());
         request.setSum(Integer.parseInt(getSum()));
 
         setCheckedProducts(request);
-        requestService.updateRequest(request);
+        purchaseService.update(request);
         return "index?faces-redirect=true";
     }
 
-    public void setCheckedProducts(RequestDTO request) {
-        List<ProductDescriptionDTO> productDescriptionDTOList = getProducts();
-        List<ProductDescriptionDTO> selectedProducts = new ArrayList<>();
-        for (ProductDescriptionDTO product : productDescriptionDTOList) {
+    public void setCheckedProducts(PurchaseDTO request) {
+        List<ProductDTO> productDTOList = getProducts();
+        List<ProductDTO> selectedProducts = new ArrayList<>();
+        for (ProductDTO product : productDTOList) {
             if (product.isSelected()) {
                 selectedProducts.add(product);
             }
         }
-        request.setProductDescriptions(selectedProducts);
+        request.setProduct(selectedProducts);
     }
 
     public String aggregateAllProducts(){
@@ -158,13 +158,13 @@ public class RequestController {
     }
 
     public String aggregateCheckedProducts(Long id){
-        RequestDTO requestDTO = requestService.findById(id);
-        fillRequestFields(requestDTO);
-        List<ProductDescriptionDTO> selectedProducts = requestDTO.getProductDescriptions();
-        List<ProductDescriptionDTO> allProducts = productDescriptionService.findAll();
+        PurchaseDTO purchaseDTO = purchaseService.findById(id);
+        fillRequestFields(purchaseDTO);
+        List<ProductDTO> selectedProducts = purchaseDTO.getProduct();
+        List<ProductDTO> allProducts = productDescriptionService.findAll();
         for (int i=0;i<allProducts.size();i++) {
-            for (ProductDescriptionDTO productDescriptionDTO : selectedProducts) {
-                if (productDescriptionDTO.getId().equals(allProducts.get(i).getId())) {
+            for (ProductDTO productDTO : selectedProducts) {
+                if (productDTO.getId().equals(allProducts.get(i).getId())) {
                     allProducts.get(i).setSelected(true);
                 }
             }
@@ -179,10 +179,10 @@ public class RequestController {
         setSum("");
     }
 
-    public void fillRequestFields(RequestDTO requestDTO) {
-        setId(requestDTO.getId());
-        setCustomerName(requestDTO.getCustomerName());
-        setCustomerAddress(requestDTO.getCustomerAddress());
-        setSum(String.valueOf(requestDTO.getSum()));
+    public void fillRequestFields(PurchaseDTO purchaseDTO) {
+        setId(purchaseDTO.getId());
+        setCustomerName(purchaseDTO.getCustomerName());
+        setCustomerAddress(purchaseDTO.getCustomerAddress());
+        setSum(String.valueOf(purchaseDTO.getSum()));
     }
 }

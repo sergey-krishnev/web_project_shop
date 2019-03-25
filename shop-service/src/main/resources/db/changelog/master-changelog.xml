@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.1
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.1.xsd">
     <changeSet id="1" author="user">
-        <createTable tableName="request">
+        <createTable tableName="purchase">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints nullable="false" unique="true" primaryKey="true"/>
             </column>
@@ -20,19 +20,19 @@
             </column>
         </createTable>
 
-        <createTable tableName="request_details">
+        <createTable tableName="purchase_details">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints nullable="false" unique="true" primaryKey="true"/>
             </column>
             <column name="product_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="request_id" type="bigint">
+            <column name="purchase_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
         </createTable>
 
-        <createTable tableName="product_description">
+        <createTable tableName="product">
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints nullable="false" unique="true" primaryKey="true"/>
             </column>
@@ -48,56 +48,56 @@
         </createTable>
 
 
-        <addForeignKeyConstraint baseTableName="request_details" baseColumnNames="product_id"
-                                 constraintName="fk_product_id_request_details"
-                                 referencedTableName="product_description" referencedColumnNames="id"/>
-        <addForeignKeyConstraint baseTableName="request_details" baseColumnNames="request_id"
-                                 constraintName="fk_request_id_request_details"
-                                 referencedTableName="request" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="purchase_details" baseColumnNames="product_id"
+                                 constraintName="fk_product_id_purchase_details"
+                                 referencedTableName="product" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="purchase_details" baseColumnNames="purchase_id"
+                                 constraintName="fk_purchase_id_purchase_details"
+                                 referencedTableName="purchase" referencedColumnNames="id"/>
 
     </changeSet>
     <changeSet id="2" author="user">
-        <insert tableName="request">
+        <insert tableName="purchase">
             <column name="customer_name" value="vsvesdv"/>
             <column name="customer_address" value="sdfvfdbfgbfdvdf"/>
             <column name="sum" value="15"/>
         </insert>
-        <insert tableName="request">
+        <insert tableName="purchase">
             <column name="customer_name" value="dsvfdx"/>
             <column name="customer_address" value="dscvzvxcwgyh"/>
             <column name="sum" value="10"/>
         </insert>
-        <insert tableName="request">
+        <insert tableName="purchase">
             <column name="customer_name" value="asxsdcxc"/>
             <column name="customer_address" value="ioloililu"/>
             <column name="sum" value="13"/>
         </insert>
-        <insert tableName="product_description">
+        <insert tableName="product">
             <column name="name" value="fesdrefdbf"/>
             <column name="description" value="dssssssgftrh"/>
             <column name="date" value="01-01-01"/>
         </insert>
-        <insert tableName="product_description">
+        <insert tableName="product">
             <column name="name" value="fesdjrtyjtyujuiktf"/>
             <column name="description" value="qwdwgerhfgbnuik,"/>
             <column name="date" value="01-01-01"/>
         </insert>
-        <insert tableName="product_description">
+        <insert tableName="product">
             <column name="name" value="piuimkyuvddbf"/>
             <column name="description" value="awrfeswf eerg reghrt sgf"/>
             <column name="date" value="01-01-01"/>
         </insert>
-        <insert tableName="request_details">
+        <insert tableName="purchase_details">
             <column name="product_id" value="3"/>
-            <column name="request_id" value="3"/>
+            <column name="purchase_id" value="3"/>
         </insert>
-        <insert tableName="request_details">
+        <insert tableName="purchase_details">
             <column name="product_id" value="2"/>
-            <column name="request_id" value="1"/>
+            <column name="purchase_id" value="1"/>
         </insert>
-        <insert tableName="request_details">
+        <insert tableName="purchase_details">
             <column name="product_id" value="1"/>
-            <column name="request_id" value="2"/>
+            <column name="purchase_id" value="2"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

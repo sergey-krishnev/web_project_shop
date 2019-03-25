@@ -11,7 +11,7 @@ import java.sql.Date;
 
 @Data
 @Entity
-public class ProductDescription {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

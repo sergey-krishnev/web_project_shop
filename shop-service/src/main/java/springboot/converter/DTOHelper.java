@@ -1,12 +1,11 @@
 package springboot.converter;
 
-import springboot.dto.ProductDescriptionDTO;
-import springboot.dto.RequestDTO;
-import springboot.model.ProductDescription;
-import springboot.model.Request;
+import springboot.dto.ProductDTO;
+import springboot.dto.PurchaseDTO;
+import springboot.model.Product;
+import springboot.model.Purchase;
 
 import java.sql.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,41 +14,41 @@ public class DTOHelper {
 
 
 
-    public static void requestToRequestDTO(List<Request> requestList, List<RequestDTO> requests) {
-        for (Request request : requestList) {
-            RequestDTO requestDTO = new RequestDTO();
-            List<ProductDescription> productDescriptionList = request.getProductDescriptions();
-            List<ProductDescriptionDTO> productDescriptions = new ArrayList<>();
-            productDescriptionToProductDescriptionDTO(productDescriptionList, productDescriptions);
-            requestDTO.setId(request.getId());
-            requestDTO.setCustomerName(request.getCustomerName());
-            requestDTO.setCustomerAddress(request.getCustomerAddress());
-            requestDTO.setSum(request.getSum());
-            requestDTO.setProductDescriptions(productDescriptions);
-            requests.add(requestDTO);
+    public static void requestToRequestDTO(List<Purchase> purchaseList, List<PurchaseDTO> requests) {
+        for (Purchase purchase : purchaseList) {
+            PurchaseDTO purchaseDTO = new PurchaseDTO();
+            List<Product> productList = purchase.getProduct();
+            List<ProductDTO> productDescriptions = new ArrayList<>();
+            productDescriptionToProductDescriptionDTO(productList, productDescriptions);
+            purchaseDTO.setId(purchase.getId());
+            purchaseDTO.setCustomerName(purchase.getCustomerName());
+            purchaseDTO.setCustomerAddress(purchase.getCustomerAddress());
+            purchaseDTO.setSum(purchase.getSum());
+            purchaseDTO.setProduct(productDescriptions);
+            requests.add(purchaseDTO);
         }
     }
 
-    public static void productDescriptionToProductDescriptionDTO(List<ProductDescription> productDescriptionList, List<ProductDescriptionDTO> productDescriptions) {
+    public static void productDescriptionToProductDescriptionDTO(List<Product> productList, List<ProductDTO> productDescriptions) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        for (ProductDescription productDescription : productDescriptionList) {
-            ProductDescriptionDTO productDescriptionDTO = new ProductDescriptionDTO();
-            productDescriptionDTO.setId(productDescription.getId());
-            productDescriptionDTO.setName(productDescription.getName());
-            productDescriptionDTO.setDescription(productDescription.getDescription());
-            productDescriptionDTO.setDate(df.format(productDescription.getDate()));
-            productDescriptions.add(productDescriptionDTO);
+        for (Product product : productList) {
+            ProductDTO productDTO = new ProductDTO();
+            productDTO.setId(product.getId());
+            productDTO.setName(product.getName());
+            productDTO.setDescription(product.getDescription());
+            productDTO.setDate(df.format(product.getDate()));
+            productDescriptions.add(productDTO);
         }
     }
 
-    public static void productDescriptionDTOToProductDescription(List<ProductDescriptionDTO> productDescriptions, List<ProductDescription> productDescriptionList) {
-        for(ProductDescriptionDTO productDescriptionDTO:productDescriptions) {
-            ProductDescription productDescription = new ProductDescription();
-            productDescription.setId(productDescriptionDTO.getId());
-            productDescription.setName(productDescriptionDTO.getName());
-            productDescription.setDescription(productDescriptionDTO.getDescription());
-            productDescription.setDate(Date.valueOf(productDescriptionDTO.getDate()));
-            productDescriptionList.add(productDescription);
+    public static void productDescriptionDTOToProductDescription(List<ProductDTO> productDescriptions, List<Product> productList) {
+        for(ProductDTO productDTO :productDescriptions) {
+            Product product = new Product();
+            product.setId(productDTO.getId());
+            product.setName(productDTO.getName());
+            product.setDescription(productDTO.getDescription());
+            product.setDate(Date.valueOf(productDTO.getDate()));
+            productList.add(product);
         }
     }
 
