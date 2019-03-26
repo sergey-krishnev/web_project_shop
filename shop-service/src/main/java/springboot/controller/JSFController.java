@@ -9,27 +9,17 @@ import springboot.dto.PurchaseDTO;
 import springboot.service.ProductDescriptionService;
 import springboot.service.PurchaseService;
 
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 
 
-@Scope(value = "session")
-
+@ViewScoped
 @Component(value = "requestController")
-//@Join(path = "/request", to = "/index.jsf")
 public class JSFController {
-
-    private Long id;
-
-    private String customerName;
-
-    private String customerAddress;
-
-    private String sum;
 
     @Autowired
     private PurchaseService purchaseService;
@@ -41,42 +31,12 @@ public class JSFController {
 
     private ProductDTO product;
 
+    private PurchaseDTO purchase;
+
     @Autowired
     private DateClient dateClient;
 
     private String action="1";
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public String getCustomerAddress() {
-        return customerAddress;
-    }
-
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
-    }
-
-    public String getSum() {
-        return sum;
-    }
-
-    public void setSum(String sum) {
-        this.sum = sum;
-    }
 
     public void setProducts(List<ProductDTO> products) {
         this.products = products;
@@ -92,6 +52,14 @@ public class JSFController {
 
     public List<ProductDTO> getProducts() {
         return products;
+    }
+
+    public PurchaseDTO getPurchase() {
+        return purchase;
+    }
+
+    public void setPurchase(PurchaseDTO purchase) {
+        this.purchase = purchase;
     }
 
     public String getAction() {
@@ -118,71 +86,29 @@ public class JSFController {
 
 
     public String insertRequestAction() {
-        PurchaseDTO request = new PurchaseDTO();
-        request.setCustomerName(getCustomerName());
-        request.setCustomerAddress(getCustomerAddress());
-        request.setSum(Integer.parseInt(getSum()));
-
-        setCheckedProducts(request);
-        purchaseService.add(request);
+        productDescriptionService.setCheckedProducts(getPurchase(),getProducts());
+        purchaseService.add(getPurchase());
         return "index?faces-redirect=true";
     }
 
     public String editRequestAction() {
-        PurchaseDTO request = new PurchaseDTO();
-        request.setId(getId());
-        request.setCustomerName(getCustomerName());
-        request.setCustomerAddress(getCustomerAddress());
-        request.setSum(Integer.parseInt(getSum()));
-
-        setCheckedProducts(request);
-        purchaseService.update(request);
+        productDescriptionService.setCheckedProducts(getPurchase(),getProducts());
+        purchaseService.update(getPurchase());
         return "index?faces-redirect=true";
     }
 
-    public void setCheckedProducts(PurchaseDTO request) {
-        List<ProductDTO> productDTOList = getProducts();
-        List<ProductDTO> selectedProducts = new ArrayList<>();
-        for (ProductDTO product : productDTOList) {
-            if (product.isSelected()) {
-                selectedProducts.add(product);
-            }
-        }
-        request.setProduct(selectedProducts);
-    }
-
     public String aggregateAllProducts(){
-        cleanRequestFields();
+        setPurchase(new PurchaseDTO());
         setProducts(productDescriptionService.findAll());
         return "add?faces-redirect=true";
     }
 
     public String aggregateCheckedProducts(Long id){
-        PurchaseDTO purchaseDTO = purchaseService.findById(id);
-        fillRequestFields(purchaseDTO);
-        List<ProductDTO> selectedProducts = purchaseDTO.getProduct();
+        setPurchase(purchaseService.findById(id));
+        List<ProductDTO> selectedProducts = getPurchase().getProduct();
         List<ProductDTO> allProducts = productDescriptionService.findAll();
-        for (int i=0;i<allProducts.size();i++) {
-            for (ProductDTO productDTO : selectedProducts) {
-                if (productDTO.getId().equals(allProducts.get(i).getId())) {
-                    allProducts.get(i).setSelected(true);
-                }
-            }
-        }
+        productDescriptionService.aggregateCheckedProducts(selectedProducts,allProducts);
         setProducts(allProducts);
         return "edit?faces-redirect=true";
-    }
-
-    public void cleanRequestFields() {
-        setCustomerName("");
-        setCustomerAddress("");
-        setSum("");
-    }
-
-    public void fillRequestFields(PurchaseDTO purchaseDTO) {
-        setId(purchaseDTO.getId());
-        setCustomerName(purchaseDTO.getCustomerName());
-        setCustomerAddress(purchaseDTO.getCustomerAddress());
-        setSum(String.valueOf(purchaseDTO.getSum()));
     }
 }

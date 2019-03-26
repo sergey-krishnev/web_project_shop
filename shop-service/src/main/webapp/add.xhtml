@@ -13,13 +13,13 @@
                     <h:panelGrid columns="2" width="100%"  >
 
                         <h:outputText value="Customer name"/>
-                        <h:inputText value="#{requestController.customerName}"/>
+                        <h:inputText value="#{requestController.purchase.customerName}"/>
 
                         <h:outputText value="Address"/>
-                        <h:inputText value="#{requestController.customerAddress}"/>
+                        <h:inputText value="#{requestController.purchase.customerAddress}"/>
 
                         <h:outputText value="Sum"/>
-                        <h:inputText value="#{requestController.sum}"/>
+                        <h:inputText value="#{requestController.purchase.sum}"/>
 
                     </h:panelGrid>
                 </rich:panel>
