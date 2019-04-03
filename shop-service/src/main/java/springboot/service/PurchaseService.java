@@ -1,6 +1,7 @@
 package springboot.service;
 
 import springboot.dto.PurchaseDTO;
+import springboot.model.Purchase;
 
 import java.util.List;
 
@@ -10,7 +11,7 @@ public interface PurchaseService {
 
     PurchaseDTO findById(long id);
 
-    void add(PurchaseDTO purchaseDTO);
+    PurchaseDTO add(PurchaseDTO purchaseDTO);
 
-    void update(PurchaseDTO purchaseDTO);
+    PurchaseDTO update(PurchaseDTO purchaseDTO);
 }

@@ -1,7 +1,6 @@
 package springboot.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import springboot.client.DateClient;
 import springboot.dto.ProductDTO;
@@ -12,6 +11,7 @@ import springboot.service.PurchaseService;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -77,7 +77,10 @@ public class JSFController {
     }
 
     public PurchaseDTO getRequest() {
-        return purchaseService.findById(Integer.parseInt(getAction()));
+        if (!(purchaseService.findAll().isEmpty())) {
+            return purchaseService.findById(Integer.parseInt(getAction()));
+        }
+        return new PurchaseDTO();
     }
 
     public String getDate() throws MalformedURLException {
@@ -104,11 +107,13 @@ public class JSFController {
     }
 
     public String aggregateCheckedProducts(Long id){
-        setPurchase(purchaseService.findById(id));
-        List<ProductDTO> selectedProducts = getPurchase().getProduct();
-        List<ProductDTO> allProducts = productDescriptionService.findAll();
-        productDescriptionService.aggregateCheckedProducts(selectedProducts,allProducts);
-        setProducts(allProducts);
+        if (!(purchaseService.findAll().isEmpty())) {
+            setPurchase(purchaseService.findById(id));
+            List<ProductDTO> selectedProducts = getPurchase().getProduct();
+            List<ProductDTO> allProducts = productDescriptionService.findAll();
+            productDescriptionService.aggregateCheckedProducts(selectedProducts,allProducts);
+            setProducts(allProducts);
+        }
         return "edit?faces-redirect=true";
     }
 }

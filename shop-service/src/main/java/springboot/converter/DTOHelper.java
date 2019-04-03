@@ -12,8 +12,6 @@ import java.util.List;
 
 public class DTOHelper {
 
-
-
     public static void requestToRequestDTO(List<Purchase> purchaseList, List<PurchaseDTO> requests) {
         for (Purchase purchase : purchaseList) {
             PurchaseDTO purchaseDTO = new PurchaseDTO();
@@ -26,6 +24,21 @@ public class DTOHelper {
             purchaseDTO.setSum(purchase.getSum());
             purchaseDTO.setProduct(productDescriptions);
             requests.add(purchaseDTO);
+        }
+    }
+
+    public static void requestDTOToRequest(List<PurchaseDTO> requests, List<Purchase> purchaseList) {
+        for (PurchaseDTO purchaseDTO : requests) {
+            Purchase purchase =  new Purchase();
+            List<Product> productList = new ArrayList<>();
+            List<ProductDTO> productDescriptions = purchaseDTO.getProduct();
+            productDescriptionDTOToProductDescription(productDescriptions, productList);
+            purchase.setId(purchaseDTO.getId());
+            purchase.setCustomerName(purchaseDTO.getCustomerName());
+            purchase.setCustomerAddress(purchaseDTO.getCustomerAddress());
+            purchase.setSum(purchaseDTO.getSum());
+            purchase.setProduct(productList);
+            purchaseList.add(purchase);
         }
     }
 

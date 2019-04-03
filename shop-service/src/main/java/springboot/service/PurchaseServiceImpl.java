@@ -33,7 +33,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     @Override
     public PurchaseDTO findById(long id) {
 
-        Purchase purchase = purchaseRepository.findById(id).get();
+        Purchase purchase = purchaseRepository.getOne(id);
         PurchaseDTO purchaseDTO = new PurchaseDTO();
         purchaseDTO.setId(purchase.getId());
         purchaseDTO.setCustomerName(purchase.getCustomerName());
@@ -48,7 +48,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     @Transactional
     @Override
-    public void add(PurchaseDTO purchaseDTO) {
+    public PurchaseDTO add(PurchaseDTO purchaseDTO) {
         Purchase purchase = new Purchase();
         purchase.setCustomerName(purchaseDTO.getCustomerName());
         purchase.setCustomerAddress(purchaseDTO.getCustomerAddress());
@@ -58,10 +58,11 @@ public class PurchaseServiceImpl implements PurchaseService {
         DTOHelper.productDescriptionDTOToProductDescription(productDescriptions, productList);
         purchase.setProduct(productList);
         purchaseRepository.save(purchase);
+        return purchaseDTO;
     }
 
     @Override
-    public void update(PurchaseDTO purchaseDTO) {
+    public PurchaseDTO update(PurchaseDTO purchaseDTO) {
         Purchase purchase = new Purchase();
         purchase.setId(purchaseDTO.getId());
         purchase.setCustomerName(purchaseDTO.getCustomerName());
@@ -72,5 +73,6 @@ public class PurchaseServiceImpl implements PurchaseService {
         DTOHelper.productDescriptionDTOToProductDescription(productDescriptions, productList);
         purchase.setProduct(productList);
         purchaseRepository.save(purchase);
+        return purchaseDTO;
     }
 }
