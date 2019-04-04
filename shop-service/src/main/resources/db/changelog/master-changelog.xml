@@ -56,48 +56,48 @@
                                  referencedTableName="purchase" referencedColumnNames="id"/>
 
     </changeSet>
-    <!--<changeSet id="2" author="user">-->
-        <!--<insert tableName="purchase">-->
-            <!--<column name="customer_name" value="vsvesdv"/>-->
-            <!--<column name="customer_address" value="sdfvfdbfgbfdvdf"/>-->
-            <!--<column name="sum" value="15"/>-->
-        <!--</insert>-->
-        <!--<insert tableName="purchase">-->
-            <!--<column name="customer_name" value="dsvfdx"/>-->
-            <!--<column name="customer_address" value="dscvzvxcwgyh"/>-->
-            <!--<column name="sum" value="10"/>-->
-        <!--</insert>-->
-        <!--<insert tableName="purchase">-->
-            <!--<column name="customer_name" value="asxsdcxc"/>-->
-            <!--<column name="customer_address" value="ioloililu"/>-->
-            <!--<column name="sum" value="13"/>-->
-        <!--</insert>-->
-        <!--<insert tableName="product">-->
-            <!--<column name="name" value="fesdrefdbf"/>-->
-            <!--<column name="description" value="dssssssgftrh"/>-->
-            <!--<column name="date" value="01-01-01"/>-->
-        <!--</insert>-->
-        <!--<insert tableName="product">-->
-            <!--<column name="name" value="fesdjrtyjtyujuiktf"/>-->
-            <!--<column name="description" value="qwdwgerhfgbnuik,"/>-->
-            <!--<column name="date" value="01-01-01"/>-->
-        <!--</insert>-->
-        <!--<insert tableName="product">-->
-            <!--<column name="name" value="piuimkyuvddbf"/>-->
-            <!--<column name="description" value="awrfeswf eerg reghrt sgf"/>-->
-            <!--<column name="date" value="01-01-01"/>-->
-        <!--</insert>-->
-        <!--<insert tableName="purchase_details">-->
-            <!--<column name="product_id" value="3"/>-->
-            <!--<column name="purchase_id" value="3"/>-->
-        <!--</insert>-->
-        <!--<insert tableName="purchase_details">-->
-            <!--<column name="product_id" value="2"/>-->
-            <!--<column name="purchase_id" value="1"/>-->
-        <!--</insert>-->
-        <!--<insert tableName="purchase_details">-->
-            <!--<column name="product_id" value="1"/>-->
-            <!--<column name="purchase_id" value="2"/>-->
-        <!--</insert>-->
-    <!--</changeSet>-->
+    <changeSet id="2" author="user">
+        <insert tableName="purchase">
+            <column name="customer_name" value="vsvesdv"/>
+            <column name="customer_address" value="sdfvfdbfgbfdvdf"/>
+            <column name="sum" value="15"/>
+        </insert>
+        <insert tableName="purchase">
+            <column name="customer_name" value="dsvfdx"/>
+            <column name="customer_address" value="dscvzvxcwgyh"/>
+            <column name="sum" value="10"/>
+        </insert>
+        <insert tableName="purchase">
+            <column name="customer_name" value="asxsdcxc"/>
+            <column name="customer_address" value="ioloililu"/>
+            <column name="sum" value="13"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name" value="fesdrefdbf"/>
+            <column name="description" value="dssssssgftrh"/>
+            <column name="date" value="01-01-01"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name" value="fesdjrtyjtyujuiktf"/>
+            <column name="description" value="qwdwgerhfgbnuik,"/>
+            <column name="date" value="01-01-01"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name" value="piuimkyuvddbf"/>
+            <column name="description" value="awrfeswf eerg reghrt sgf"/>
+            <column name="date" value="01-01-01"/>
+        </insert>
+        <insert tableName="purchase_details">
+            <column name="product_id" value="3"/>
+            <column name="purchase_id" value="3"/>
+        </insert>
+        <insert tableName="purchase_details">
+            <column name="product_id" value="2"/>
+            <column name="purchase_id" value="1"/>
+        </insert>
+        <insert tableName="purchase_details">
+            <column name="product_id" value="1"/>
+            <column name="purchase_id" value="2"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>

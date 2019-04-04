@@ -5,12 +5,19 @@
     <f:view>
 
         <h:head>
+            <h:head>
+                <link rel="StyleSheet" type="text/css"
+                      href="../resources/css/style.css" media="screen"/>
+            </h:head>
         </h:head>
         <h:body>
+            <ui:insert name = "header" >
+                <ui:include src = "date.xhtml" />
+            </ui:insert>
             <h:form>
                 <br/>
-                <rich:panel header="Add request" style="width:450px">
-                    <h:panelGrid columns="2" width="100%"  >
+                <rich:panel header="Add request">
+                    <h:panelGrid style="width:20%" columns="2">
 
                         <h:outputText value="Customer name"/>
                         <h:inputText value="#{requestController.purchase.customerName}"/>
@@ -24,23 +31,23 @@
                     </h:panelGrid>
                 </rich:panel>
                     <h:form>
-                        <rich:panel header="Choose the products" style="width:450px">
-                        <rich:dataTable var="product" value="#{requestController.products}">
+                        <rich:panel header="Choose the products">
+                        <rich:dataTable var="product" value="#{requestController.products}" style="width:100%">
                             <f:facet name="header">
                                 <rich:columnGroup>
-                                    <rich:column>
+                                    <rich:column style="width: 10%">
                                         <h:outputText value="Id"/>
                                     </rich:column>
-                                    <rich:column>
+                                    <rich:column style="width: 20%">
                                         <h:outputText value="Name"/>
                                     </rich:column>
-                                    <rich:column>
+                                    <rich:column style="width: 40%">
                                         <h:outputText value="Description"/>
                                     </rich:column>
-                                    <rich:column>
+                                    <rich:column style="width: 20%">
                                         <h:outputText value="Date"/>
                                     </rich:column>
-                                    <rich:column>
+                                    <rich:column style="width: 10%">
                                         <h:outputText value="Added product"/>
                                     </rich:column>
                                 </rich:columnGroup>
@@ -71,5 +78,10 @@
                     </h:form>
             </h:form>
         </h:body>
+        <footer>
+            <ui:insert name = "footer" >
+                <ui:include src = "banner.xhtml" />
+            </ui:insert>
+        </footer>
     </f:view>
 </ui:composition>
