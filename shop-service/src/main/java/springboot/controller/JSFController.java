@@ -1,6 +1,5 @@
 package springboot.controller;
 
-import javafx.scene.control.ColorPicker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import springboot.client.DateClient;
@@ -12,7 +11,6 @@ import springboot.service.PurchaseService;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import java.net.MalformedURLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

@@ -35,19 +35,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetCurrentDateResponse }
-     * 
-     */
-    public GetCurrentDateResponse createGetCurrentDateResponse() {
-        return new GetCurrentDateResponse();
-    }
-
-    /**
      * Create an instance of {@link GetCurrentDate }
      * 
      */
     public GetCurrentDate createGetCurrentDate() {
         return new GetCurrentDate();
+    }
+
+    /**
+     * Create an instance of {@link GetCurrentDateResponse }
+     * 
+     */
+    public GetCurrentDateResponse createGetCurrentDateResponse() {
+        return new GetCurrentDateResponse();
     }
 
     /**
