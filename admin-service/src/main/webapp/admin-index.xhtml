@@ -27,6 +27,9 @@
                         <rich:column>
                             <h:outputText value="Date"/>
                         </rich:column>
+                        <rich:column colspan="2">
+                            <h:outputText value="Action"/>
+                        </rich:column>
                     </rich:columnGroup>
                 </f:facet>
                 <rich:column>
@@ -40,6 +43,12 @@
                 </rich:column>
                 <rich:column>
                     <h:outputText value="#{products.date}"/>
+                </rich:column>
+                <rich:column>
+                    <h:commandButton value="Edit" action="#{adminController.updateForm(products.id)}"/>
+                </rich:column>
+                <rich:column>
+                    <h:commandButton value="Delete" action="#{adminController.delete(products.id)}"/>
                 </rich:column>
             </rich:dataTable>
         </h:form>

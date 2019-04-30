@@ -11,6 +11,9 @@
             <ui:insert name = "header" >
                 <ui:include src = "date.xhtml" />
             </ui:insert>
+            <h:form style="text-align: center">
+                <h:commandButton value="Go to admin page" action="#{requestController.adminPage}" style="text-align: center"/>
+            </h:form>
             <rich:panel>
                 <h:form id="request">
                     <rich:dataTable var="requestData" style="width: 100%" value="#{requestController.requests}">

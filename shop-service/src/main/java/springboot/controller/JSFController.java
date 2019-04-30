@@ -9,7 +9,9 @@ import springboot.service.ProductDescriptionService;
 import springboot.service.PurchaseService;
 
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
@@ -114,5 +116,10 @@ public class JSFController {
             setProducts(allProducts);
         }
         return "edit?faces-redirect=true";
+    }
+
+    public void adminPage() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        externalContext.redirect("http://localhost:9091/admin-index.jsf");
     }
 }

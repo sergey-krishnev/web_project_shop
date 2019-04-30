@@ -40,7 +40,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void add(ProductDTO productDTO) {
         Product product = new Product();
-        product.setId(1L);
         product.setName(productDTO.getName());
         product.setDescription(productDTO.getDescription());
         product.setDate(stringAsDate(productDTO.getDate()));
@@ -48,9 +47,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void update(long id, ProductDTO productDTO) {
+    public void update(ProductDTO productDTO) {
         Product product = new Product();
-        product.setId(id);
+        product.setId(productDTO.getId());
         product.setName(productDTO.getName());
         product.setDescription(productDTO.getDescription());
         product.setDate(stringAsDate(productDTO.getDate()));
