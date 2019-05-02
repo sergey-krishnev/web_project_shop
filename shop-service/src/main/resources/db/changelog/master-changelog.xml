@@ -100,4 +100,58 @@
             <column name="purchase_id" value="2"/>
         </insert>
     </changeSet>
+
+    <changeSet id="add-user-authority-tables" author="user">
+        <createTable tableName="users">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(80)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="authority">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authority" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="authority" baseColumnNames="user_id"
+                                 constraintName="fk_users_authorities"
+                                 referencedTableName="users" referencedColumnNames="id"/>
+
+    </changeSet>
+
+    <changeSet id="insert-user-authority-table" author="user">
+        <insert tableName="users">
+            <column name="username" value="user"/>
+            <column name="password" value="$2a$11$t4E80TQIJY8qpmr0xKee2uaJlNgvRbskUs18Q9otHfGslqYlfkjYu"/>
+        </insert>
+        <insert tableName="users">
+            <column name="username" value="admin"/>
+            <column name="password" value="$2a$11$jGYMR/1rx5BSaYbYfzFheOsU9RLMKbrDpPvthMqeEIVgda7n6xeiu"/>
+        </insert>
+        <insert tableName="authority">
+            <column name="user_id" value="1"/>
+            <column name="authority" value="ROLE_USER"/>
+        </insert>
+        <insert tableName="authority">
+            <column name="user_id" value="2"/>
+            <column name="authority" value="ROLE_USER"/>
+        </insert>
+        <insert tableName="authority">
+            <column name="user_id" value="2"/>
+            <column name="authority" value="ROLE_ADMIN"/>
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>
