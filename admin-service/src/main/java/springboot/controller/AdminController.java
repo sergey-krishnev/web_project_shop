@@ -7,6 +7,9 @@ import springboot.dto.ProductDTO;
 import springboot.service.ProductService;
 
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import java.io.IOException;
 import java.util.List;
 
 @RequestScoped
@@ -58,6 +61,16 @@ public class AdminController {
         } catch (DataIntegrityViolationException e) {
             return "admin-error?faces-redirect=true";
         }
+    }
+
+    public void userPage() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        externalContext.redirect("http://localhost:9090/index.jsf");
+    }
+
+    public void logout() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        externalContext.redirect("/logout");
     }
 
 }

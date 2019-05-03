@@ -12,7 +12,10 @@
                 <ui:include src = "date.xhtml" />
             </ui:insert>
             <h:form style="text-align: center">
-                <h:commandButton value="Go to admin page" action="#{requestController.adminPage}" style="text-align: center"/>
+                <h:commandButton value="Go to admin page" action="#{requestController.adminPage}"/>
+            </h:form>
+            <h:form style="text-align: right">
+                <h:commandButton value="Logout" action="#{requestController.logout}"/>
             </h:form>
             <rich:panel>
                 <h:form id="request">

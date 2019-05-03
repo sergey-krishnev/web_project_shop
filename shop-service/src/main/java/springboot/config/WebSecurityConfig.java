@@ -44,6 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
+                .successForwardUrl("/index.jsf")
                 .permitAll()
                 .and()
                 .logout()

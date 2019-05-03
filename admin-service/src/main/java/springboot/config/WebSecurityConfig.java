@@ -38,12 +38,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/admin-index.jsf").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
-                .antMatchers("/admin-add.jsf").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
-                .antMatchers("/admin-edit.jsf").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
+                .antMatchers("/admin-index.jsf").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/admin-add.jsf").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/admin-edit.jsf").access("hasRole('ROLE_ADMIN')")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
+                .successForwardUrl("/admin-index.jsf")
                 .permitAll()
                 .and()
                 .logout()

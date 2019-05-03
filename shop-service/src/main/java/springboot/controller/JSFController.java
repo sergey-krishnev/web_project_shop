@@ -122,4 +122,9 @@ public class JSFController {
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         externalContext.redirect("http://localhost:9091/admin-index.jsf");
     }
+
+    public void logout() throws IOException {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+        externalContext.redirect("/logout");
+    }
 }

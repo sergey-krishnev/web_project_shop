@@ -7,9 +7,14 @@
         </h:head>
     <h:body>
         <h:form style="text-align: center">
-            <h:outputText value="Admin page is work"/>
+            <h:outputText value="Admin page"/>
         </h:form>
-
+        <h:form style="text-align: center">
+            <h:commandButton value="Go to user page" action="#{adminController.userPage}"/>
+        </h:form>
+        <h:form style="text-align: right">
+            <h:commandButton value="Logout" action="#{adminController.logout}"/>
+        </h:form>
         <h:form id="products">
             <rich:dataTable var="products" style="width: 100%"
                             value="#{adminController.products}">
