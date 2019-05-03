@@ -1,12 +1,12 @@
 package springboot.model;
 
 import lombok.Data;
+import org.hibernate.annotations.Type;
+import org.postgresql.largeobject.LargeObject;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.sql.Blob;
 import java.sql.Date;
 
 @Data
@@ -24,4 +24,12 @@ public class Product {
 
     @NotNull
     private Date date;
+
+    @NotNull
+//    @Lob
+    @Column(name="image")
+//    @Type(type="org.hibernate.type.BinaryType")
+    private byte[] image;
+//    @NotNull
+//    private LargeObject image;
 }

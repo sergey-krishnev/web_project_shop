@@ -84,6 +84,9 @@
                                 <rich:column>
                                     <h:outputText value="Date"/>
                                 </rich:column>
+                                <rich:column>
+                                    <h:outputText value="Image"/>
+                                </rich:column>
                             </rich:columnGroup>
                         </f:facet>
                         <rich:column>
@@ -97,6 +100,11 @@
                         </rich:column>
                         <rich:column>
                             <h:outputText value="#{products.date}"/>
+                        </rich:column>
+                        <rich:column>
+                            <a4j:mediaOutput element="img" cacheable="false" session="false"
+                                             createContent="#{requestController.paint}" value="#{products}"
+                                             mimeType="image/jpeg" />
                         </rich:column>
                     </rich:dataTable>
                 </h:form>

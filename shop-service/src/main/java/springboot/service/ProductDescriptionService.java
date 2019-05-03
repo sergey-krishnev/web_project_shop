@@ -13,5 +13,4 @@ public interface ProductDescriptionService {
     void setCheckedProducts(PurchaseDTO purchase, List<ProductDTO> productDTOList);
 
     void aggregateCheckedProducts(List<ProductDTO> selectedProducts, List<ProductDTO> allProducts);
-
 }

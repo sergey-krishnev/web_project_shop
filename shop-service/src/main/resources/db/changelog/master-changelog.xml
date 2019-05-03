@@ -45,6 +45,9 @@
             <column name="date" type="timestamp">
                 <constraints nullable="false"/>
             </column>
+            <column name="image" type="bytea">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
 
@@ -76,16 +79,19 @@
             <column name="name" value="fesdrefdbf"/>
             <column name="description" value="dssssssgftrh"/>
             <column name="date" value="01-01-01"/>
+            <column name="image" value="../images/1.jpg"/>
         </insert>
         <insert tableName="product">
             <column name="name" value="fesdjrtyjtyujuiktf"/>
             <column name="description" value="qwdwgerhfgbnuik,"/>
             <column name="date" value="01-01-01"/>
+            <column name="image" value="../images/2.jpg"/>
         </insert>
         <insert tableName="product">
             <column name="name" value="piuimkyuvddbf"/>
             <column name="description" value="awrfeswf eerg reghrt sgf"/>
             <column name="date" value="01-01-01"/>
+            <column name="image" value="../images/3.jpg"/>
         </insert>
         <insert tableName="purchase_details">
             <column name="product_id" value="3"/>

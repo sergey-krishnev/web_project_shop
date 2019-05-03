@@ -2,8 +2,10 @@ package springboot.dto;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class ProductDTO {
+public class ProductDTO implements Serializable {
 
     private Long id;
 
@@ -13,5 +15,8 @@ public class ProductDTO {
 
     private String date;
 
+    private byte[] image;
+
     private boolean selected;
+
 }

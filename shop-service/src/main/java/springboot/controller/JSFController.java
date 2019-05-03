@@ -11,7 +11,11 @@ import springboot.service.PurchaseService;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.util.List;
 import java.util.Map;
@@ -127,4 +131,19 @@ public class JSFController {
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         externalContext.redirect("/logout");
     }
+
+    public void paint(OutputStream out, Object data) throws IOException {
+        ProductDTO image = (ProductDTO)data;
+        ImageIO.write(createImageFromBytes(image.getImage()), "jpg", out);
+    }
+
+    private BufferedImage createImageFromBytes(byte[] imageData) {
+        ByteArrayInputStream bais = new ByteArrayInputStream(imageData);
+        try {
+            return ImageIO.read(bais);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
