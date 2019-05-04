@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.1"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.1
-    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.1.xsd">
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
     <changeSet id="1" author="user">
         <createTable tableName="purchase">
             <column name="id" type="bigint" autoIncrement="true">
@@ -45,7 +44,7 @@
             <column name="date" type="timestamp">
                 <constraints nullable="false"/>
             </column>
-            <column name="image" type="bytea">
+            <column name="image" type="longblob">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -78,20 +77,20 @@
         <insert tableName="product">
             <column name="name" value="fesdrefdbf"/>
             <column name="description" value="dssssssgftrh"/>
-            <column name="date" value="01-01-01"/>
-            <column name="image" value="../images/1.jpg"/>
+            <column name="date" valueDate="2001-01-01"/>
+            <column name="image" type="longblob" valueBlobFile="../../../images/1.jpg"/>
         </insert>
         <insert tableName="product">
             <column name="name" value="fesdjrtyjtyujuiktf"/>
             <column name="description" value="qwdwgerhfgbnuik,"/>
-            <column name="date" value="01-01-01"/>
-            <column name="image" value="../images/2.jpg"/>
+            <column name="date" valueDate="2002-01-05"/>
+            <column name="image" type="longblob" valueBlobFile="../../../images/2.jpg"/>
         </insert>
         <insert tableName="product">
             <column name="name" value="piuimkyuvddbf"/>
             <column name="description" value="awrfeswf eerg reghrt sgf"/>
-            <column name="date" value="01-01-01"/>
-            <column name="image" value="../images/3.jpg"/>
+            <column name="date" valueDate="2003-01-05"/>
+            <column name="image" type="longblob" valueBlobFile="../../../images/3.jpg"/>
         </insert>
         <insert tableName="purchase_details">
             <column name="product_id" value="3"/>

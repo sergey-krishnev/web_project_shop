@@ -47,6 +47,9 @@
                                     <rich:column style="width: 20%">
                                         <h:outputText value="Date"/>
                                     </rich:column>
+                                    <rich:column>
+                                        <h:outputText value="Image"/>
+                                    </rich:column>
                                     <rich:column style="width: 10%">
                                         <h:outputText value="Added product"/>
                                     </rich:column>
@@ -63,6 +66,11 @@
                             </rich:column>
                             <rich:column>
                                 <h:outputText value="#{product.date}"/>
+                            </rich:column>
+                            <rich:column>
+                                <a4j:mediaOutput element="img" cacheable="false" session="false"
+                                                 createContent="#{requestController.paint}" value="#{product}"
+                                                 mimeType="image/jpeg" />
                             </rich:column>
                             <rich:column>
                                 <h:selectBooleanCheckbox value="#{product.selected}" />

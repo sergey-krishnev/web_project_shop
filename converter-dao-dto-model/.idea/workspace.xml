@@ -7,20 +7,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39d93ca8-f9cb-44a2-a7d5-23738f814b0e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../admin-service/src/main/java/springboot/config/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../admin-service/src/main/webapp/login.xhtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/springboot/dao/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/springboot/model/Authority.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/springboot/model/Users.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/springboot/service/UserDetailsServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../shop-service/src/main/java/springboot/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin-service/src/main/java/springboot/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-service/src/main/java/springboot/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../admin-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/converter-dao-dto-model.iml" beforeDir="false" afterPath="$PROJECT_DIR$/converter-dao-dto-model.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/springboot/dao/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springboot/dao/ProductRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/springboot/dao/PurchaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springboot/dao/PurchaseRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../admin-service/src/main/webapp/admin-index.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../admin-service/src/main/webapp/admin-index.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/springboot/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/springboot/model/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shop-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../shop-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shop-service/src/main/java/springboot/controller/JSFController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../shop-service/src/main/java/springboot/controller/JSFController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shop-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../shop-service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shop-service/src/main/resources/db/changelog/master-changelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../shop-service/src/main/resources/db/changelog/master-changelog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shop-service/src/main/webapp/add.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../shop-service/src/main/webapp/add.xhtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shop-service/src/main/webapp/edit.xhtml" beforeDir="false" afterPath="$PROJECT_DIR$/../shop-service/src/main/webapp/edit.xhtml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,22 +29,24 @@
     <session id="-1317941389">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.0" value="1" />
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="1" />
           <entry key="iml" value="1" />
+          <entry key="java" value="1" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
+          <entry key="JAVA" value="1" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="1" />
         </counts>
@@ -81,15 +79,34 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/springboot/model/Product.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/springboot/model/Product.java" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -110,6 +127,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -147,7 +165,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -187,6 +204,7 @@
       <updated>1556542902881</updated>
       <workItem from="1556542906360" duration="1103000" />
       <workItem from="1556801993433" duration="69000" />
+      <workItem from="1556966026406" duration="161000" />
     </task>
     <task id="LOCAL-00001" summary="has added module and has edited admin-service with shop-service">
       <created>1556548483667</created>
@@ -199,12 +217,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1172000" />
+    <option name="totallyTimeSpent" value="1333000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -221,7 +240,7 @@
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32973504" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -259,6 +278,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/springboot/model/Product.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">

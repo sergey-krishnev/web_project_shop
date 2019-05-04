@@ -10,7 +10,7 @@
             <h:outputText value="Admin page"/>
         </h:form>
         <h:form style="text-align: center">
-            <h:commandButton value="Go to user page" action="#{adminController.userPage}"/>
+            <h:commandButton value="Go to user page" action="#{adminController.getUserPage}"/>
         </h:form>
         <h:form style="text-align: right">
             <h:commandButton value="Logout" action="#{adminController.logout}"/>
@@ -32,6 +32,9 @@
                         <rich:column>
                             <h:outputText value="Date"/>
                         </rich:column>
+                        <rich:column>
+                            <h:outputText value="Image"/>
+                        </rich:column>
                         <rich:column colspan="2">
                             <h:outputText value="Action"/>
                         </rich:column>
@@ -48,6 +51,11 @@
                 </rich:column>
                 <rich:column>
                     <h:outputText value="#{products.date}"/>
+                </rich:column>
+                <rich:column>
+                    <a4j:mediaOutput element="img" cacheable="false" session="false"
+                                     createContent="#{adminController.paint}" value="#{products}"
+                                     mimeType="image/jpeg" />
                 </rich:column>
                 <rich:column>
                     <h:commandButton value="Edit" action="#{adminController.updateForm(products.id)}"/>

@@ -2,7 +2,6 @@ package springboot.model;
 
 import lombok.Data;
 import org.hibernate.annotations.Type;
-import org.postgresql.largeobject.LargeObject;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -26,9 +25,9 @@ public class Product {
     private Date date;
 
     @NotNull
-//    @Lob
+    @Lob
     @Column(name="image")
-//    @Type(type="org.hibernate.type.BinaryType")
+    @Type(type="org.hibernate.type.BinaryType")
     private byte[] image;
 //    @NotNull
 //    private LargeObject image;

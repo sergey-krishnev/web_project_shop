@@ -9,7 +9,11 @@ import springboot.service.ProductService;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
 @RequestScoped
@@ -63,7 +67,7 @@ public class AdminController {
         }
     }
 
-    public void userPage() throws IOException {
+    public void getUserPage() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         externalContext.redirect("http://localhost:9090/index.jsf");
     }
@@ -71,6 +75,20 @@ public class AdminController {
     public void logout() throws IOException {
         ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         externalContext.redirect("/logout");
+    }
+
+    public void paint(OutputStream out, Object data) throws IOException {
+        ProductDTO image = (ProductDTO)data;
+        ImageIO.write(createImageFromBytes(image.getImage()), "jpg", out);
+    }
+
+    private BufferedImage createImageFromBytes(byte[] imageData) {
+        ByteArrayInputStream bais = new ByteArrayInputStream(imageData);
+        try {
+            return ImageIO.read(bais);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
