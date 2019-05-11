@@ -6,3 +6,5 @@ Feature: Login to shop service
     And I fill in password with "admin"
     And I press login
     Then I should be on the home page
+    When I press the button logout
+    Then I should be on the login page

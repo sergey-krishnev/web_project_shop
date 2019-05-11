@@ -1,5 +1,6 @@
 package steps;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -50,8 +51,24 @@ public class LoginStepdefs {
         }
     }
 
+    @When("^I press the button logout$")
+    public void iPressTheButtonLogout(){
+        driver.findElement(By.name("j_idt9:j_idt10")).click();
+    }
+
+    @Then("^I should be on the login page$")
+    public void iShouldBeOnTheLoginPage(){
+        if(driver.findElement(By.className("alert")).isDisplayed()) {
+            System.out.println("Test Pass");
+        } else {
+            System.out.println("Test Failed");
+        }
+    }
+
     @After
     public void closeBrowser() {
         driver.close();
     }
+
+
 }
