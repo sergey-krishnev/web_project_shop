@@ -1,14 +1,10 @@
 package steps;
 
-import cucumber.api.PendingException;
+import utilities.BrowserHelper;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class RedirectStepdefs {
 
@@ -17,8 +13,7 @@ public class RedirectStepdefs {
 
     @Given("^a web browser$")
     public void aWebBrowser() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = BrowserHelper.getDriver();
     }
 
     @When("^the user navigates to the ([^\"]*)$")
