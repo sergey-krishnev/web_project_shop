@@ -1,7 +1,7 @@
 Feature: Login to shop service
 
   Scenario: Login with correct username and password
-    Given a User admin exists with password admin
+    Given a User admin goes to login page
     When I fill in username with "admin"
     And I fill in password with "admin"
     And I press login
