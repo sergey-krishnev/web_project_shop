@@ -15,7 +15,6 @@ public class RedirectStepdefs {
     private WebDriver driver = null;
 
 
-
     @Given("^a web browser$")
     public void aWebBrowser() {
         WebDriverManager.chromedriver().setup();
@@ -28,7 +27,7 @@ public class RedirectStepdefs {
     }
 
     @Then("^link redirects to login page$")
-    public void linkRedirectsToLoginPage() throws Throwable {
+    public void linkRedirectsToLoginPage() {
         if (driver.getCurrentUrl().equals("http://localhost:9090/login")) {
             System.out.println("Test Pass");
         } else{
