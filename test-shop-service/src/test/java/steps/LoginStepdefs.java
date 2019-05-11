@@ -1,5 +1,6 @@
 package steps;
 
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -47,6 +48,10 @@ public class LoginStepdefs {
         } else {
             System.out.println("Test Failed");
         }
+    }
+
+    @After
+    public void closeBrowser() {
         driver.close();
     }
 }
