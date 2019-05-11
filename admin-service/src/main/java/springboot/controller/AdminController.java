@@ -1,5 +1,7 @@
 package springboot.controller;
 
+import org.richfaces.event.FileUploadEvent;
+import org.richfaces.model.UploadedFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
@@ -14,11 +16,12 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.Serializable;
 import java.util.List;
 
 @RequestScoped
 @Component(value = "adminController")
-public class AdminController {
+public class AdminController implements Serializable {
 
     @Autowired
     ProductService productService;
@@ -90,5 +93,13 @@ public class AdminController {
             throw new RuntimeException(e);
         }
     }
+
+    public void listener(FileUploadEvent event) throws Exception{
+        UploadedFile item = event.getUploadedFile();
+        ProductDTO productDTO = getProductDTO();
+        productDTO.setImage(item.getData());
+        setProductDTO(productDTO);
+    }
+
 
 }

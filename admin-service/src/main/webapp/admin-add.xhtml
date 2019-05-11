@@ -19,7 +19,6 @@
 
                     <h:outputText value="Date"/>
                     <h:inputText value="#{adminController.productDTO.date}"/>
-
                 </h:panelGrid>
             </rich:panel>
                 <h:commandButton value="Insert"
@@ -29,6 +28,10 @@
                                  action="admin-index?faces-redirect=true">
                 </h:commandButton>
             </h:form>
+            <rich:fileUpload fileUploadListener="#{adminController.listener}" id="upload" acceptedTypes=".jpg"
+                             ontyperejected="alert('Only JPG, GIF, PNG and BMP files are accepted');" maxFilesQuantity="1">
+                <a4j:ajax event="uploadcomplete" execute="@none" render="info" />
+            </rich:fileUpload>
         </h:body>
     </f:view>
 </ui:composition>
