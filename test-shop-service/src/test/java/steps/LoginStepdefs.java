@@ -1,5 +1,6 @@
 package steps;
 
+import cucumber.api.PendingException;
 import utilities.BrowserHelper;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -62,10 +63,17 @@ public class LoginStepdefs {
         }
     }
 
+    @Then("^I get the message with bad credentials$")
+    public void iGetTheMessageWithBadCredentials(){
+        if (driver.findElement(By.className("alert-danger")).isDisplayed()){
+            System.out.println("Test Pass");
+        } else {
+            System.out.println("Test Failed");
+        }
+    }
+
     @After
     public void closeBrowser() {
         driver.close();
     }
-
-
 }

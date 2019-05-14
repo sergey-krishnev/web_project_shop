@@ -55,10 +55,10 @@
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-security</artifactId>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -140,16 +140,16 @@
         <!--</dependency>-->
 
 
-        <!--<dependency>-->
-        <!--<groupId>com.sun.faces</groupId>-->
-        <!--<artifactId>jsf-api</artifactId>-->
-        <!--<version>2.2.6</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>com.sun.faces</groupId>-->
-        <!--<artifactId>jsf-impl</artifactId>-->
-        <!--<version>2.2.6</version>-->
-        <!--</dependency>-->
+        <dependency>
+        <groupId>com.sun.faces</groupId>
+        <artifactId>jsf-api</artifactId>
+        <version>2.2.6</version>
+        </dependency>
+        <dependency>
+        <groupId>com.sun.faces</groupId>
+        <artifactId>jsf-impl</artifactId>
+        <version>2.2.6</version>
+        </dependency>
         <!--<dependency>-->
         <!--<groupId>javax.servlet</groupId>-->
         <!--<artifactId>servlet-api</artifactId>-->
