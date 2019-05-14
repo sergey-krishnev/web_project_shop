@@ -20,8 +20,10 @@
                     <h:outputText value="Date"/>
                     <h:inputText value="#{adminController.productDTO.date}"/>
 
-                    <h:inputFile id="upload" value="#{adminController.file}">
-                    </h:inputFile>
+                        <rich:fileUpload fileUploadListener="#{uploadController.listener}" id="upload" acceptedTypes="jpg"
+                                         immediateUpload="true" maxFilesQuantity="1">
+                            <a4j:ajax event="uploadcomplete" execute="@none" render="info" />
+                        </rich:fileUpload>
 
                 </h:panelGrid>
 

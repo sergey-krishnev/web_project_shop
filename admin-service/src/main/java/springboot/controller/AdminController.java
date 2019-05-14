@@ -7,24 +7,19 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 import springboot.dto.ProductDTO;
 import springboot.service.ProductService;
-import springboot.utils.ByteArrayHelper;
 
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.faces.event.PhaseId;
 import javax.imageio.ImageIO;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.http.Part;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.nio.file.Files;
 import java.util.List;
 
 @RequestScoped
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-        maxFileSize = 1024 * 1024 * 10, // 10MB
-        maxRequestSize = 1024 * 1024 * 50)
+//@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+//        maxFileSize = 1024 * 1024 * 10, // 10MB
+//        maxRequestSize = 1024 * 1024 * 50)
 @Component(value = "adminController")
 public class AdminController implements Serializable {
 
@@ -32,8 +27,6 @@ public class AdminController implements Serializable {
     private ProductService productService;
 
     private ProductDTO productDTO;
-
-    private Part file;
 
     public ProductDTO getProductDTO() {
         return productDTO;
@@ -47,14 +40,6 @@ public class AdminController implements Serializable {
         return productService.getAll();
     }
 
-    public Part getFile() {
-        return file;
-    }
-
-    public void setFile(Part file) {
-        this.file = file;
-    }
-
     public String addForm() {
         setProductDTO(new ProductDTO());
         return "admin-add?faces-redirect=true";
@@ -66,13 +51,7 @@ public class AdminController implements Serializable {
     }
 
     public String add() {
-        ProductDTO productDTO = getProductDTO();
-        try {
-            productDTO.setImage(ByteArrayHelper.toByteArray(file.getInputStream()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        productService.add(productDTO);
+        productService.add(getProductDTO());
         return "admin-index?faces-redirect=true";
     }
 
@@ -114,12 +93,7 @@ public class AdminController implements Serializable {
         }
     }
 
-//    public void listener(FileUploadEvent event) {
-//        UploadedFile item = event.getUploadedFile();
-//        ProductDTO productDTO = getProductDTO();
-//        productDTO.setImage(item.getData());
-//        setProductDTO(productDTO);
-//    }
+
 
 
 }
