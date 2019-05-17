@@ -20,15 +20,15 @@
     </properties>
 
     <!--<dependencyManagement>-->
-        <!--<dependencies>-->
-            <!--<dependency>-->
-                <!--<groupId>org.richfaces</groupId>-->
-                <!--<artifactId>richfaces-bom</artifactId>-->
-                <!--<version>4.5.1.Final</version>-->
-                <!--<scope>import</scope>-->
-                <!--<type>pom</type>-->
-            <!--</dependency>-->
-        <!--</dependencies>-->
+    <!--<dependencies>-->
+    <!--<dependency>-->
+    <!--<groupId>org.richfaces</groupId>-->
+    <!--<artifactId>richfaces-bom</artifactId>-->
+    <!--<version>4.5.1.Final</version>-->
+    <!--<scope>import</scope>-->
+    <!--<type>pom</type>-->
+    <!--</dependency>-->
+    <!--</dependencies>-->
     <!--</dependencyManagement>-->
 
     <dependencies>
@@ -98,23 +98,24 @@
         <dependency>
             <groupId>org.richfaces.ui</groupId>
             <artifactId>richfaces-components-ui</artifactId>
-            <version>4.0.0.Final</version>
+            <version>4.3.1.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.richfaces.ui</groupId>
+            <artifactId>richfaces-components-api</artifactId>
+            <version>4.3.1.Final</version>
         </dependency>
         <dependency>
             <groupId>org.richfaces.core</groupId>
             <artifactId>richfaces-core-impl</artifactId>
-            <version>4.0.0.Final</version>
+            <version>4.3.1.Final</version>
         </dependency>
-
-
-
-
 
 
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.faces</artifactId>
-            <version>2.2.6</version>
+            <version>2.2.5</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -126,36 +127,6 @@
             <artifactId>standard</artifactId>
             <version>1.1.2</version>
         </dependency>
-
-        <dependency>
-        <groupId>org.richfaces</groupId>
-        <artifactId>richfaces</artifactId>
-        <version>4.0.0.Final</version>
-        </dependency>
-
-        <!--<dependency>-->
-        <!--<groupId>org.primefaces</groupId>-->
-        <!--<artifactId>primefaces</artifactId>-->
-        <!--<version>6.1</version>-->
-        <!--</dependency>-->
-
-
-        <dependency>
-        <groupId>com.sun.faces</groupId>
-        <artifactId>jsf-api</artifactId>
-        <version>2.2.6</version>
-        </dependency>
-        <dependency>
-        <groupId>com.sun.faces</groupId>
-        <artifactId>jsf-impl</artifactId>
-        <version>2.2.6</version>
-        </dependency>
-        <!--<dependency>-->
-        <!--<groupId>javax.servlet</groupId>-->
-        <!--<artifactId>servlet-api</artifactId>-->
-        <!--<version>2.5</version>-->
-        <!--<scope>provided</scope>-->
-        <!--</dependency>-->
 
         <!--Tomcat-->
         <dependency>
@@ -176,6 +147,12 @@
             <artifactId>converter-dao-dto-model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+
 
     </dependencies>
 

@@ -7,26 +7,29 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 import springboot.dto.ProductDTO;
 import springboot.service.ProductService;
+import springboot.utils.ByteArrayHelper;
 
-import javax.faces.bean.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
+import javax.servlet.http.Part;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.List;
 
-@RequestScoped
-//@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-//        maxFileSize = 1024 * 1024 * 10, // 10MB
-//        maxRequestSize = 1024 * 1024 * 50)
+@ViewScoped
 @Component(value = "adminController")
 public class AdminController implements Serializable {
 
     @Autowired
     private ProductService productService;
+//    @Autowired
+//    private UploadFileBean state;
 
     private ProductDTO productDTO;
+
 
     public ProductDTO getProductDTO() {
         return productDTO;
@@ -51,9 +54,29 @@ public class AdminController implements Serializable {
     }
 
     public String add() {
+//        addImage();
         productService.add(getProductDTO());
         return "admin-index?faces-redirect=true";
     }
+
+//    public void addImage() {
+//        ProductDTO productDTO = getProductDTO();
+//        productDTO.setImage(state.getUploadedFile().getData());
+//    }
+
+//    public void save() {
+//        ProductDTO productDTO = getProductDTO();
+//        try {
+//            productDTO.setImage(ByteArrayHelper.toByteArray(state.getFile().getInputStream()));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        setProductDTO(productDTO);
+//    }
+
+//    public void listener(FileUploadEvent event) {
+//        state.setUploadedFile(event.getUploadedFile());
+//    }
 
     public String update() {
         productService.update(getProductDTO());
@@ -92,8 +115,6 @@ public class AdminController implements Serializable {
             throw new RuntimeException(e);
         }
     }
-
-
 
 
 }
