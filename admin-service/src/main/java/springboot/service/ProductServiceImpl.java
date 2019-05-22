@@ -43,6 +43,7 @@ public class ProductServiceImpl implements ProductService {
         product.setName(productDTO.getName());
         product.setDescription(productDTO.getDescription());
         product.setDate(stringAsDate(productDTO.getDate()));
+        product.setImage(productDTO.getImage());
         productRepository.save(product);
     }
 
@@ -53,6 +54,7 @@ public class ProductServiceImpl implements ProductService {
         product.setName(productDTO.getName());
         product.setDescription(productDTO.getDescription());
         product.setDate(stringAsDate(productDTO.getDate()));
+        product.setImage(productDTO.getImage());
         productRepository.save(product);
     }
 

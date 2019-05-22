@@ -7,28 +7,29 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
 import springboot.dto.ProductDTO;
 import springboot.service.ProductService;
-import springboot.utils.ByteArrayHelper;
 
-import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.imageio.ImageIO;
-import javax.servlet.http.Part;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.List;
 
+@ManagedBean
 @ViewScoped
 @Component(value = "adminController")
 public class AdminController implements Serializable {
 
-    @Autowired
-    private ProductService productService;
-//    @Autowired
-//    private UploadFileBean state;
+    private final ProductService productService;
 
     private ProductDTO productDTO;
+
+    @Autowired
+    public AdminController(ProductService productService) {
+        this.productService = productService;
+    }
 
 
     public ProductDTO getProductDTO() {
@@ -74,11 +75,15 @@ public class AdminController implements Serializable {
 //        setProductDTO(productDTO);
 //    }
 
-//    public void listener(FileUploadEvent event) {
-//        state.setUploadedFile(event.getUploadedFile());
-//    }
+    public void listener(FileUploadEvent event) {
+        UploadedFile item = event.getUploadedFile();
+        ProductDTO productDTO = getProductDTO();
+        productDTO.setImage(item.getData());
+        setProductDTO(productDTO);
+    }
 
-    public String update() {
+
+        public String update() {
         productService.update(getProductDTO());
         return "admin-index?faces-redirect=true";
     }
